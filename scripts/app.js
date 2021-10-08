@@ -1,0 +1,125 @@
+//Snake Game
+
+//requirements
+    // HTML
+        //Add Title and Current score elements
+
+    //JS
+        // create a grid in JS
+        //have a start game button function that plays everyhing listed below 
+        // make Pyramid Head.gif move in the grid with a trail of torment.gif of 3 boxes
+        // have pyramid head move with arrow keys and/or 'WASD'
+        // character will rotate and it's trail will when it changes direction!
+        // function to make a random person appear on the screen with Math.random
+        // when character is in the same square as the random object, remove the object and call function again
+        // when character consumes the object have the trail length be +1
+        // when character touches the edge have the game end
+        // once game ends show end game score
+
+// frogger
+    // HTML
+        // add Title and level counter
+
+    // JS
+        // create Grid
+        // create movement for survivor
+        // obstacles will be zombies.gif and crawling zombies.gif that you have to jump on cars to survive
+        // math.random to find out which zombie will show up between 3 different zombies
+        // if the character is in the same position as a zombie they die and go back to the start
+        // once the survivor is on one of the four armouries they go to the next level
+        // next level will have faster moving zombies
+
+// PAC-MAN
+    // Title and current score
+
+//JS
+    // //Create Grid
+    // //create Movement for Viking
+    // current score will be skulls drunken blood from
+    // create map
+    // the ghosts will be knights (and/or maybe samurai)
+    // once Viking consumes his Beserk potion have the knights panic and disarmed(if possible)
+    // when viking is on the same spot on the grid as a knight sound effects of swords hitting no matter if viking has gone beserk or not
+    // have two spots on the map be ports so that the viking can take a longboat to the other port on the map
+    // when the viking reaches the left or right side of the map have him go to the opposite side.
+    // **Bonus** have a character selection screen with different factions to chose from, Viking, Knight, Samurai and every time you pick on faction it will show opposite factions as enemies
+    // **Bonus** as soon as the berserker consumes the potion give him the ability to throw 1 axe
+
+    function init() {
+
+        const grid = document.querySelector('.grid')
+        let viking = document.querySelector('.viking')
+
+        const width = 10
+        const cellCount = width * width
+        const cells = []
+      
+        const startingVikingPosition = 0
+        let currentVikingPosition = 0
+        const VikingClass = 'VikingRight'
+      
+        // Grid Creation
+
+        function createGrid(startingVikingPosition) {
+          for (let i = 0; i < cellCount; i++) {
+            const cell = document.createElement('div')
+            cell.innerText = i
+            grid.appendChild(cell)
+            cells.push(cell)
+          }
+          addViking(startingVikingPosition)
+        }
+      
+        function addViking(position) {
+          cells[position].classList.add(VikingClass)
+        }
+      
+        function removeViking(position) {
+          cells[position].classList.remove(VikingClass)
+        }
+      
+      
+        function handleKeyUp(event) {
+          console.log('position before key', currentVikingPosition)
+          const key = event.keyCode
+          removeViking(currentVikingPosition)
+      
+          if (key === 39 && currentVikingPosition % width !== width - 1) {
+            console.log('RIGHT')
+            currentVikingPosition++
+            VikingClass.style.transform ="scaleX(-1)";
+          } else if (key === 37 && currentVikingPosition % width !== 0) {
+            console.log('LEFT')
+            currentVikingPosition--
+          } else if (key === 38 && currentVikingPosition >= width) {
+            console.log('UP')
+            currentVikingPosition -= width
+          } else if (key === 40 && currentVikingPosition + width <= width * width - 1) {
+            console.log('DOWN')
+            currentVikingPosition += width
+          } else {
+            console.log('INVALID KEY')
+          }
+      
+          addViking(currentVikingPosition)
+        }
+      
+      
+      
+      
+      
+      
+      
+        document.addEventListener('keyup', handleKeyUp)
+      
+        createGrid(startingVikingPosition)
+
+        window.addEventListener("keydown", function(e) {
+            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+      
+      }
+      
+      window.addEventListener('DOMContentLoaded', init)
