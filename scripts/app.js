@@ -48,7 +48,7 @@
     function init() {
 
         const grid = document.querySelector('.grid')
-        let viking = document.querySelector('.viking')
+        
 
         const width = 10
         const cellCount = width * width
@@ -56,7 +56,8 @@
       
         const startingVikingPosition = 0
         let currentVikingPosition = 0
-        const VikingClass = 'VikingRight'
+        let VikingClass = "Viking"
+        let VikingClassLeft = "VikingLeft"
       
         // Grid Creation
 
@@ -76,6 +77,7 @@
       
         function removeViking(position) {
           cells[position].classList.remove(VikingClass)
+          cells[position].classList.remove(VikingClassLeft)
         }
       
       
@@ -87,13 +89,16 @@
           if (key === 39 && currentVikingPosition % width !== width - 1) {
             console.log('RIGHT')
             currentVikingPosition++
-            VikingClass.style.transform ="scaleX(-1)";
+            cells[currentVikingPosition].classList = "Viking"
           } else if (key === 37 && currentVikingPosition % width !== 0) {
             console.log('LEFT')
+
             currentVikingPosition--
+            cells[currentVikingPosition].classList.toggle("VikingLeft")
           } else if (key === 38 && currentVikingPosition >= width) {
             console.log('UP')
             currentVikingPosition -= width
+
           } else if (key === 40 && currentVikingPosition + width <= width * width - 1) {
             console.log('DOWN')
             currentVikingPosition += width
