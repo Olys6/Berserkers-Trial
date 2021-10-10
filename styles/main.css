@@ -5,6 +5,7 @@
   body {
     height: 100vh;
     margin: 0;
+    background-image: ;
   }
   
   h1 {
@@ -41,12 +42,20 @@
     width: 500px;
     margin-top: -150px;
   }
+
+  .coin {
+    background-image: url("../Assets/Coin.gif");
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position-x: center;
+    background-position-y: center;
+  }
   
   .grid div {
     border: 1px solid lightgrey;
-    flex-grow: 1;
-    height: 10%;
-    width: 10%;
+    flex-grow: 2;
+    height: 7%;
+    width: 7%;
   }
   
   .Viking {
@@ -63,3 +72,6 @@
     cursor: pointer;
   }
 
+  .disapprovedMovement {
+    background-color:rgba(0, 0, 0, 0.2)
+  }

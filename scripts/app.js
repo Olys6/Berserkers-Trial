@@ -48,9 +48,10 @@
     function init() {
 
         const grid = document.querySelector('.grid')
+        let currentScoreText = document.querySelector("#CurrentScore")
         
 
-        const width = 10
+        const width = 14
         const cellCount = width * width
         const cells = []
       
@@ -58,19 +59,40 @@
         let currentVikingPosition = 0
         let VikingClass = "Viking"
         let VikingClassLeft = "VikingLeft"
-      
+        
         // Grid Creation
 
         function createGrid(startingVikingPosition) {
           for (let i = 0; i < cellCount; i++) {
+            
             const cell = document.createElement('div')
-            cell.innerText = i
+            cell.id = i
+            cell.classList.add("coin")
             grid.appendChild(cell)
             cells.push(cell)
+            
           }
           addViking(startingVikingPosition)
         }
       
+        const wallClass = 'disapprovedMovement'
+
+        const walls = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12, 13, 27, 41, 55, 69, 83, 97, 111, 125, 139, 153, 167, 181, 195,
+        194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 168, 154, 140, 126, 112, 98, 84, 70, 56, 42, 28, 14]
+
+          function addWalls() {
+        walls.forEach((wall) => {
+          cells[wall].classList.add(wallClass)
+        });
+      }
+
+        // const cell = document.createElement('div')
+        // const walls = cell.find((indCell) => {
+        //   return indCell.id = "5"
+          
+        // })
+        // walls.classList.add("disapprovedMovement")
+
         function addViking(position) {
           cells[position].classList.add(VikingClass)
         }
@@ -78,46 +100,61 @@
         function removeViking(position) {
           cells[position].classList.remove(VikingClass)
           cells[position].classList.remove(VikingClassLeft)
+
         }
       
-      
+        let currentScore = 0
+
+        function removeCoin(position) {
+          
+          if(cells[position].classList.contains("coin")) {
+            currentScore++
+            currentScoreText.innerText = currentScore
+            
+          }
+          cells[position].classList.remove("coin")
+          console.log(currentScore)
+        }
+
         function handleKeyUp(event) {
           console.log('position before key', currentVikingPosition)
           const key = event.keyCode
           removeViking(currentVikingPosition)
+          removeCoin(currentVikingPosition)
       
           if (key === 39 && currentVikingPosition % width !== width - 1) {
             console.log('RIGHT')
             currentVikingPosition++
-            cells[currentVikingPosition].classList = "Viking"
+            cells[currentVikingPosition].classList.toggle("Viking")
           } else if (key === 37 && currentVikingPosition % width !== 0) {
             console.log('LEFT')
-
             currentVikingPosition--
             cells[currentVikingPosition].classList.toggle("VikingLeft")
-          } else if (key === 38 && currentVikingPosition >= width) {
+          } else if (key === 38 && currentVikingPosition >= width && !(cells[currentVikingPosition].classList.contains(wallClass))) {
             console.log('UP')
             currentVikingPosition -= width
-
+            cells[currentVikingPosition].classList.toggle("VikingLeft")
           } else if (key === 40 && currentVikingPosition + width <= width * width - 1) {
             console.log('DOWN')
             currentVikingPosition += width
+            cells[currentVikingPosition].classList.toggle("Viking")
           } else {
             console.log('INVALID KEY')
+            
           }
-      
+          
           addViking(currentVikingPosition)
         }
       
-      
-      
-      
-      
-      
+        
+        
       
         document.addEventListener('keyup', handleKeyUp)
       
         createGrid(startingVikingPosition)
+
+        addWalls()
+
 
         window.addEventListener("keydown", function(e) {
             if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
