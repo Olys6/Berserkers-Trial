@@ -52,10 +52,10 @@
   }
   
   .grid div {
-    border: 1px solid lightgrey;
-    flex-grow: 2;
-    height: 7%;
-    width: 7%;
+    background-color: rgb(107, 72, 72);
+    flex-grow: 1;
+    height: 7.2%;
+    width: 7.1%;
   }
   
   .Viking {
@@ -73,5 +73,8 @@
   }
 
   .disapprovedMovement {
-    background-color:rgba(0, 0, 0, 0.2)
+    background-image: url('../Assets/CobblestroneSimple.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
   }

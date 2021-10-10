@@ -77,12 +77,16 @@
       
         const wallClass = 'disapprovedMovement'
 
-        const walls = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12, 13, 27, 41, 55, 69, 83, 97, 111, 125, 139, 153, 167, 181, 195,
-        194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 168, 154, 140, 126, 112, 98, 84, 70, 56, 42, 28, 14]
+        const walls = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12, 13, 27, 41, 55, 69, 83, 97, 125, 139, 153, 167, 181, 195,
+        194, 193, 192, 191, 190, 189, 188, 187, 186, 185, 184, 183, 182, 168, 154, 140, 126, 112, 84, 70, 56, 42, 28, 14, 30, 
+        32, 46, 60, 61, 21, 35, 33, 64, 65, 51, 37, 39, 63, 93, 95, 81, 67, 89, 103, 117, 131, 132, 133, 134, 135, 121, 107, 122, 123, 90, 92
+        , 165, 151, 152, 149, 161, 177, 160, 172, 144, 130, 155, 141, 171, 143, 87, 100, 101, 57, 58, 114, 71]
 
           function addWalls() {
         walls.forEach((wall) => {
+          cells[wall].classList.remove("coin")
           cells[wall].classList.add(wallClass)
+
         });
       }
 
@@ -134,6 +138,7 @@
             console.log('UP')
             currentVikingPosition -= width
             cells[currentVikingPosition].classList.toggle("VikingLeft")
+            
           } else if (key === 40 && currentVikingPosition + width <= width * width - 1) {
             console.log('DOWN')
             currentVikingPosition += width
