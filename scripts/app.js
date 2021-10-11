@@ -55,8 +55,8 @@
         const cellCount = width * width
         const cells = []
       
-        const startingVikingPosition = 0
-        let currentVikingPosition = 0
+        const startingVikingPosition = 145
+        let currentVikingPosition = 145
         let VikingClass = "Viking"
         let VikingClassLeft = "VikingLeft"
         
@@ -90,6 +90,18 @@
         });
       }
 
+
+
+      const berserkPotionClass = 'berserkPotion'
+
+      const potionLocations = [166, 169, 43, 26]
+
+        function addPotions() {
+        potionLocations.forEach((square) => {
+          cells[square].classList.remove("coin")
+          cells[square].classList.add(berserkPotionClass)
+        });
+      }
         // const cell = document.createElement('div')
         // const walls = cell.find((indCell) => {
         //   return indCell.id = "5"
@@ -112,7 +124,7 @@
         function removeCoin(position) {
           
           if(cells[position].classList.contains("coin")) {
-            currentScore++
+            currentScore += 10
             currentScoreText.innerText = currentScore
             
           }
@@ -157,16 +169,16 @@
         document.addEventListener('keyup', handleKeyUp)
       
         createGrid(startingVikingPosition)
-
+        
         addWalls()
-
+        addPotions()
 
         window.addEventListener("keydown", function(e) {
             if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
                 e.preventDefault();
             }
         }, false);
-      
+        
       }
       
       window.addEventListener('DOMContentLoaded', init)

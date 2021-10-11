@@ -24,6 +24,9 @@
     margin-left: 20px;
   }
 
+
+
+
   .grid-wrapper {
     height: 100vh;
     display: flex;
@@ -51,8 +54,15 @@
     background-position-y: center;
   }
   
+  .bersekPotion {
+    background-image: url('../Assets/BerserkerPotion.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+
   .grid div {
-    background-color: rgb(107, 72, 72);
+    /* background-color: rgb(107, 72, 72); */
     flex-grow: 1;
     height: 7.2%;
     width: 7.1%;
@@ -78,3 +88,4 @@
     background-size: contain;
     cursor: pointer;
   }
+
