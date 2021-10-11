@@ -12,13 +12,20 @@
   
   h1 {
       text-align: center;
+      text-decoration: underline;
+      font-size: 50px;
+      margin-bottom: 3px;
   }
   
+  #firstH2 {
+    width: 230px;
+  }
+
   .scores {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: -20px;
   }
 
   h2 {

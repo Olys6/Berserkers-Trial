@@ -118,10 +118,10 @@
 
 
 
-        // let enemy1Position = 104
+        let enemy1Position = 104
 
-        function enemy1() {
-
+        function addEnemy1(position) {
+          cells[position].classList.add('enemy1')
         }
 
 
@@ -200,6 +200,7 @@
         
         addWalls()
         addPotions()
+        addEnemy1(enemy1Position)
         // teleportOnEdgeSquares()
 
         window.addEventListener("keydown", function(e) {
