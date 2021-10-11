@@ -108,13 +108,13 @@
 
       const shipLocations = [98, 111]
 
-        function teleportOnEdgeSquares(){
-          shipLocations.forEach((box) => {
-            cells[box].classList.remove("coin")
-            cells[box].classList.add('vikingShip')
+        // function teleportOnEdgeSquares(){
+        //   shipLocations.forEach((box) => {
+        //     cells[box].classList.remove("coin")
+        //     cells[box].classList.add('vikingShip')
             
-          });
-        }
+        //   });
+        // }
 
 
 
@@ -122,6 +122,24 @@
 
         function addEnemy1(position) {
           cells[position].classList.add('enemy1')
+        }
+
+        let enemy2Position = 118
+
+        function addEnemy2(position) {
+          cells[position].classList.add('enemy2')
+        }
+
+        let enemy3Position = 106
+
+        function addEnemy3(position) {
+          cells[position].classList.add('enemy3')
+        }
+
+        let enemy4Position = 120
+
+        function addEnemy4(position) {
+          cells[position].classList.add('enemy4')
         }
 
 
@@ -201,6 +219,9 @@
         addWalls()
         addPotions()
         addEnemy1(enemy1Position)
+        addEnemy2(enemy2Position)
+        addEnemy3(enemy3Position)
+        addEnemy4(enemy4Position)
         // teleportOnEdgeSquares()
 
         window.addEventListener("keydown", function(e) {

@@ -84,13 +84,6 @@
     background-size: 42px;
   }
 
-  .enemy1 {
-    background-image: url('../Assets/enemySkelly.gif');
-    background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
-  }
-
   .grid div {
     background-color: rgb(107, 72, 72);
     flex-grow: 1;
@@ -122,4 +115,32 @@
   #currentScoreCoin {
     width: 20px;
     margin-left: 10px;
+  }
+
+  .enemy1 {
+    background-image: url('../Assets/enemySkelly.gif');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    cursor: pointer;
+  }
+
+  .enemy2 {
+    background-image: url('../Assets/enemySkelly.gif');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    cursor: pointer;
+  }
+
+  .enemy3 {
+    background-image: url('../Assets/enemySkellyleft.gif');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    cursor: pointer;
+  }
+
+  .enemy4 {
+    background-image: url('../Assets/enemySkellyleft.gif');
+    background-repeat: no-repeat;
+    background-size: 30px;
+    cursor: pointer;
   }
