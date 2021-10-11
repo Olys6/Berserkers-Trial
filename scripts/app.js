@@ -103,12 +103,27 @@
           cells[square].classList.add(berserkPotionClass)
         });
       }
-        // const cell = document.createElement('div')
-        // const walls = cell.find((indCell) => {
-        //   return indCell.id = "5"
-          
-        // })
-        // walls.classList.add("disapprovedMovement")
+      
+      const vikingShipClass = 'vikingShip'
+
+      const shipLocations = [98, 111]
+
+        function teleportOnEdgeSquares(){
+          shipLocations.forEach((box) => {
+            cells[box].classList.remove("coin")
+            cells[box].classList.add('vikingShip')
+            
+          });
+        }
+
+
+
+        // let enemy1Position = 104
+
+        function enemy1() {
+
+        }
+
 
         function addViking(position) {
           cells[position].classList.add(VikingClass)
@@ -133,31 +148,41 @@
           console.log(currentScore)
         }
 
+        function consumePotion(position) {
+          
+          if(cells[position].classList.contains(berserkPotionClass)) {
+            currentScore += 100
+            currentScoreText.innerText = currentScore
+            
+          }
+          cells[position].classList.remove(berserkPotionClass)
+          console.log(currentScore)
+        }
+
         function handleKeyUp(event) {
           console.log('position before key', currentVikingPosition)
           const key = event.keyCode
           removeViking(currentVikingPosition)
           removeCoin(currentVikingPosition)
-      
-          if (key === 39 && currentVikingPosition % width !== width - 1 && !(cells[currentVikingPosition].classList.contains(wallClass))) {
+          consumePotion(currentVikingPosition)
+
+          if (!(cells[currentVikingPosition + 1].classList.contains(wallClass)) && key === 39 && currentVikingPosition % width !== width - 1) {
             console.log('RIGHT')
             currentVikingPosition++
             cells[currentVikingPosition].classList.toggle("Viking")
-          } else if (key === 37 && currentVikingPosition % width !== 0) {
+          } else if (key === 37 && currentVikingPosition % width !== 0 && !(cells[currentVikingPosition - 1].classList.contains(wallClass))) {
             console.log('LEFT')
             currentVikingPosition--
             cells[currentVikingPosition].classList.toggle("VikingLeft")
-          } else if (key === 38 && currentVikingPosition >= width && !(cells[currentVikingPosition].classList.contains(wallClass))) {
+          } else if (key === 38 && currentVikingPosition >= width && !(cells[currentVikingPosition - width].classList.contains(wallClass))) {
             console.log('UP')
             currentVikingPosition -= width
             cells[currentVikingPosition].classList.toggle("VikingLeft")
             
-          } else if (key === 40 && currentVikingPosition + width <= width * width - 1) {
+          } else if (key === 40 && currentVikingPosition + width <= width * width - 1 && !(cells[currentVikingPosition + width].classList.contains(wallClass))) {
             console.log('DOWN')
             currentVikingPosition += width
             cells[currentVikingPosition].classList.toggle("Viking")
-          } else if(!(cells[currentVikingPosition].classList.contains(wallClass))) {
-
           } else {
             console.log('INVALID KEY')
             
@@ -175,12 +200,13 @@
         
         addWalls()
         addPotions()
+        // teleportOnEdgeSquares()
 
         window.addEventListener("keydown", function(e) {
-            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
-                e.preventDefault();
-            }
-        }, false);
+          if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+              e.preventDefault();
+          }
+      }, false);
         
       }
       

@@ -5,7 +5,9 @@
   body {
     height: 100vh;
     margin: 0;
-    background-image: ;
+    background-image: url("../Assets/Dirt.jpeg");
+    font-family: norse;
+    color: rgb(221, 221, 233);
   }
   
   h1 {
@@ -53,6 +55,13 @@
     background-position-x: center;
     background-position-y: center;
   }
+
+  /* .score img {
+    max-width: 20px;
+    max-height: 20px;
+  } */
+
+  
   
   .berserkPotion {
     background-image: url('../Assets/BerserkerPotion.gif');
@@ -60,6 +69,19 @@
     background-size: 25px;
     background-position-x: center;
     background-position-y: center;
+  }
+
+  .vikingShip {
+    background-image: url('../Assets/VikingShip.gif');
+    background-repeat: no-repeat;
+    background-size: 42px;
+  }
+
+  .enemy1 {
+    background-image: url('../Assets/enemySkelly.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
   }
 
   .grid div {
@@ -90,3 +112,7 @@
     cursor: pointer;
   }
 
+  #currentScoreCoin {
+    width: 20px;
+    margin-left: 10px;
+  }
