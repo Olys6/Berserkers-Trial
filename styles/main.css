@@ -54,15 +54,16 @@
     background-position-y: center;
   }
   
-  .bersekPotion {
+  .berserkPotion {
     background-image: url('../Assets/BerserkerPotion.gif');
     background-repeat: no-repeat;
-    background-size: contain;
-    cursor: pointer;
+    background-size: 25px;
+    background-position-x: center;
+    background-position-y: center;
   }
 
   .grid div {
-    /* background-color: rgb(107, 72, 72); */
+    background-color: rgb(107, 72, 72);
     flex-grow: 1;
     height: 7.2%;
     width: 7.1%;

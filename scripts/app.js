@@ -98,6 +98,7 @@
 
         function addPotions() {
         potionLocations.forEach((square) => {
+
           cells[square].classList.remove("coin")
           cells[square].classList.add(berserkPotionClass)
         });
@@ -138,7 +139,7 @@
           removeViking(currentVikingPosition)
           removeCoin(currentVikingPosition)
       
-          if (key === 39 && currentVikingPosition % width !== width - 1) {
+          if (key === 39 && currentVikingPosition % width !== width - 1 && !(cells[currentVikingPosition].classList.contains(wallClass))) {
             console.log('RIGHT')
             currentVikingPosition++
             cells[currentVikingPosition].classList.toggle("Viking")
@@ -155,6 +156,8 @@
             console.log('DOWN')
             currentVikingPosition += width
             cells[currentVikingPosition].classList.toggle("Viking")
+          } else if(!(cells[currentVikingPosition].classList.contains(wallClass))) {
+
           } else {
             console.log('INVALID KEY')
             
