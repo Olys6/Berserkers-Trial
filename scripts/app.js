@@ -48,7 +48,7 @@
     function init() {
 
 
-      function playGame() {
+      // function playGame() {
         const grid = document.querySelector('.grid')
         let currentScoreText = document.querySelector("#CurrentScore")
         
@@ -130,31 +130,164 @@
 
         function addEnemy1(position) {
           cells[position].classList.add('enemy1')
-          myInterval = setInterval(() => {
+          setTimeout(() => {
             cells[enemy1Position].classList.remove('enemy1')
             if(!(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy3'))){
               enemy1Position++
             } 
             cells[enemy1Position].classList.add('enemy1')
+          }, 400)
+          setTimeout(() => {
+            cells[enemy1Position].classList.remove('enemy1')
+            enemy1Position -= width
+            cells[enemy1Position].classList.add('enemy1')
           }, 600)
+
+          setTimeout(() => {
+            cells[enemy1Position].classList.remove('enemy1')
+            enemy1Position -= width
+            cells[enemy1Position].classList.add('enemy1')
+          }, 800)
+
+          setTimeout(() => {
+            cells[enemy1Position].classList.remove('enemy1')
+            enemy1Position++
+            cells[enemy1Position].classList.add('enemy1')
+          }, 1000)
+
+          setTimeout(() => {
+            cells[enemy1Position].classList.remove('enemy1')
+            enemy1Position++
+            cells[enemy1Position].classList.add('enemy1')
+          }, 1200)
+
+          
+
+          setInterval(() => {
+            cells[enemy1Position].classList.remove('enemy1')
+            nextEnemy1Position = Math.round(Math.random() * 3)
+            if(nextEnemy1Position === 0 && !(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
+              enemy1Position++
+              console.log("RIGHT")
+            } else if (nextEnemy1Position === 1 && !(cells[enemy1Position - width].classList.contains(wallClass)) && !(cells[enemy1Position - width].classList.contains('enemy2 enemy3 enemy4'))) {
+              enemy1Position -= width
+              console.log("UP")
+            }  else if (nextEnemy1Position === 2 && !(cells[enemy1Position + width].classList.contains(wallClass)) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4'))) {
+              enemy1Position += width
+              console.log("DOWN")
+            }  else if (nextEnemy1Position === 3 && !(cells[enemy1Position - 1].classList.contains(wallClass)) && !(cells[enemy1Position - 1].classList.contains('enemy2 enemy3 enemy4'))) {
+              enemy1Position--
+              console.log('LEFT')
+            } else {
+              console.log("Invalid Skelly spot")
+            }
+            cells[enemy1Position].classList.add('enemy1')
+            console.log(nextEnemy1Position)
+          }, 1000)
         }
 
         let enemy2Position = 118
 
         function addEnemy2(position) {
           cells[position].classList.add('enemy2')
+          setTimeout(() => {
+            cells[enemy2Position].classList.remove('enemy2')
+            if(!(cells[enemy2Position + 1].classList.contains(wallClass)) && !(cells[enemy2Position + 1].classList.contains('enemy3'))){
+              enemy2Position++
+            } 
+            cells[enemy2Position].classList.add('enemy2')
+          }, 800)
+          setTimeout(() => {
+            cells[enemy2Position].classList.remove('enemy2')
+            enemy2Position -= width
+            cells[enemy2Position].classList.add('enemy2')
+          }, 1000)
+
+          setTimeout(() => {
+            cells[enemy2Position].classList.remove('enemy2')
+            enemy2Position -= width
+            cells[enemy2Position].classList.add('enemy2')
+          }, 1200)
+
+          setTimeout(() => {
+            cells[enemy2Position].classList.remove('enemy2')
+            enemy2Position -= width
+            cells[enemy2Position].classList.add('enemy2')
+          }, 1400)
+
+          setTimeout(() => {
+            cells[enemy2Position].classList.remove('enemy2')
+            enemy2Position++
+            cells[enemy2Position].classList.add('enemy2')
+          }, 1600)
         }
 
         let enemy3Position = 106
 
         function addEnemy3(position) {
           cells[position].classList.add('enemy3')
+          setTimeout(() => {
+            cells[enemy3Position].classList.remove('enemy3')
+              enemy3Position--
+            cells[enemy3Position].classList.add('enemy3')
+          }, 800)
+          setTimeout(() => {
+            cells[enemy3Position].classList.remove('enemy3')
+            enemy3Position -= width
+            cells[enemy3Position].classList.add('enemy3')
+          }, 1000)
+
+          setTimeout(() => {
+            cells[enemy3Position].classList.remove('enemy3')
+            enemy3Position -= width
+            cells[enemy3Position].classList.add('enemy3')
+          }, 1200)
+
+          setTimeout(() => {
+            cells[enemy3Position].classList.remove('enemy3')
+            enemy3Position--
+            cells[enemy3Position].classList.add('enemy3')
+          }, 1400)
+
+          setTimeout(() => {
+            cells[enemy3Position].classList.remove('enemy3')
+            enemy3Position--
+            cells[enemy3Position].classList.add('enemy3')
+          }, 1600)
         }
 
         let enemy4Position = 120
 
         function addEnemy4(position) {
           cells[position].classList.add('enemy4')
+          setTimeout(() => {
+            cells[enemy4Position].classList.remove('enemy4')
+              enemy4Position--
+            cells[enemy4Position].classList.add('enemy4')
+          }, 1000)
+          setTimeout(() => {
+            cells[enemy4Position].classList.remove('enemy4')
+            enemy4Position -= width
+            cells[enemy4Position].classList.add('enemy4')
+          }, 1200)
+
+          setTimeout(() => {
+            cells[enemy4Position].classList.remove('enemy4')
+            enemy4Position -= width
+            cells[enemy4Position].classList.add('enemy4')
+          }, 1400)
+
+          setTimeout(() => {
+            cells[enemy4Position].classList.remove('enemy4')
+            enemy4Position -= width
+            cells[enemy4Position].classList.add('enemy4')
+          }, 1600)
+
+          setTimeout(() => {
+            cells[enemy4Position].classList.remove('enemy4')
+            enemy4Position--
+            cells[enemy4Position].classList.add('enemy4')
+          }, 1800)
         }
 
 
@@ -240,18 +373,19 @@
         removeCoins()
         // teleportOnEdgeSquares()
 
-      }
+      // }
 
-
-      const playButton = document.querySelector('.playButton')
-      
-      playButton.addEventListener('click', playGame)
-
-        window.addEventListener("keydown", function(e) {
-          if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
-              e.preventDefault();
-          }
+      window.addEventListener("keydown", function(e) {
+        if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
       }, false);
+
+      // const playButton = document.querySelector('.playButton')
+      
+      // playButton.addEventListener('click', playGame)
+
+
         
       }
       
