@@ -47,6 +47,8 @@
 
     function init() {
 
+
+      function playGame() {
         const grid = document.querySelector('.grid')
         let currentScoreText = document.querySelector("#CurrentScore")
         
@@ -223,6 +225,10 @@
         addEnemy3(enemy3Position)
         addEnemy4(enemy4Position)
         // teleportOnEdgeSquares()
+      }
+      const playButton = document.querySelector('.playButton')
+      
+      playButton.addEventListener('click', playGame)
 
         window.addEventListener("keydown", function(e) {
           if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
