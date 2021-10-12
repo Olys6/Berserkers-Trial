@@ -92,7 +92,13 @@
         });
       }
 
+        const unwantedCoins = [91, 104, 105, 106, 118, 119, 120]
 
+        function removeCoins(){
+          unwantedCoins.forEach((coin) => {
+            cells[coin].classList.remove('coin')
+          })
+        }
 
       const berserkPotionClass = 'berserkPotion'
 
@@ -124,6 +130,13 @@
 
         function addEnemy1(position) {
           cells[position].classList.add('enemy1')
+          myInterval = setInterval(() => {
+            cells[enemy1Position].classList.remove('enemy1')
+            if(!(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy3'))){
+              enemy1Position++
+            } 
+            cells[enemy1Position].classList.add('enemy1')
+          }, 600)
         }
 
         let enemy2Position = 118
@@ -224,8 +237,12 @@
         addEnemy2(enemy2Position)
         addEnemy3(enemy3Position)
         addEnemy4(enemy4Position)
+        removeCoins()
         // teleportOnEdgeSquares()
+
       }
+
+
       const playButton = document.querySelector('.playButton')
       
       playButton.addEventListener('click', playGame)

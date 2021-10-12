@@ -153,6 +153,10 @@
   }
 
   .playButton {
+    /* display: inline-block;
+    margin: 0 0.5rem;
+    animation: animate__backInUp;
+    animation-duration: 2s; */
     width: 100px;
     text-decoration: none;
     color: brown;
