@@ -111,11 +111,24 @@
           cells[square].classList.add(berserkPotionClass)
         });
       }
-      
-      const vikingShipClass = 'vikingShip'
+      // class for the two edges of map 
+      const vikingShip = 'vikingShip'
 
-      const shipLocations = [98, 111]
+      const sideLocations = [98, 111]
 
+      function sideLocationsSet() {
+        sideLocations.forEach((square) => {
+          cells[square].classList.add(vikingShip)
+        })
+      }
+
+      function sideLocationsTP() {
+        if (!(cells[currentVikingPosition].classList.contains(vikingShip))) {
+          console.log('RIGHT')
+          currentVikingPosition = 98
+          cells[currentVikingPosition].classList.toggle("Viking")
+        }
+      }
         // function teleportOnEdgeSquares(){
         //   shipLocations.forEach((box) => {
         //     cells[box].classList.remove("coin")
@@ -173,7 +186,7 @@
       }
 
       function addEnemy1Movement() {
-        setInterval(() => {
+        // setInterval(() => {
           cells[enemy1Position].classList.remove('enemy1')
           nextEnemy1Position = Math.round(Math.random() * 3)
           if(nextEnemy1Position === 0 && !(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
@@ -188,12 +201,14 @@
           }  else if (nextEnemy1Position === 3 && !(cells[enemy1Position - 1].classList.contains(wallClass)) && !(cells[enemy1Position - 1].classList.contains('enemy2 enemy3 enemy4'))) {
             enemy1Position--
             console.log('LEFT')
-          } else {
+          // } else if((cells[enemy1Position].classList.contains('viking vikingLef'))) {
+          //   window.alert("YOU LOSE")
+          // } else {
             console.log("invalid skelly spot")
           }
           cells[enemy1Position].classList.add('enemy1')
           console.log(nextEnemy1Position)
-        }, 500)
+        // }, 800)
       }
 
         let enemy2Position = 118
@@ -250,12 +265,14 @@
             }  else if (nextenemy2Position === 3 && !(cells[enemy2Position - 1].classList.contains(wallClass)) && !(cells[enemy2Position - 1].classList.contains('enemy1 enemy3 enemy4'))) {
               enemy2Position--
               console.log('LEFT')
-            } else {
+            // } else if((cells[enemy1Position].classList.contains('viking vikingLef'))) {
+            //   window.alert("YOU LOSE")
+            // } else {
               console.log("invalid skelly spot")
             }
             cells[enemy2Position].classList.add('enemy2')
             console.log(nextenemy2Position)
-          }, 500)
+          }, 800)
         }
 
         let enemy3Position = 106
@@ -315,7 +332,7 @@
             }
             cells[enemy3Position].classList.add('enemy3')
             console.log(nextenemy3Position)
-          }, 500)
+          }, 800)
         }
     
         let enemy4Position = 120
@@ -375,7 +392,7 @@
             }
             cells[enemy4Position].classList.add('enemy4')
             console.log(nextenemy4Position)
-          }, 500)
+          }, 800)
         }
 
         function addViking(position) {
@@ -413,11 +430,13 @@
         }
 
         function handleKeyUp(event) {
+          consumePotion(currentVikingPosition)
+
           console.log('position before key', currentVikingPosition)
           const key = event.keyCode
           removeViking(currentVikingPosition)
           removeCoin(currentVikingPosition)
-          consumePotion(currentVikingPosition)
+
 
           if (!(cells[currentVikingPosition + 1].classList.contains(wallClass)) && key === 39 && currentVikingPosition % width !== width - 1) {
             console.log('RIGHT')
@@ -436,6 +455,16 @@
             console.log('DOWN')
             currentVikingPosition += width
             cells[currentVikingPosition].classList.toggle("Viking")
+          } else if(key === 39 && (cells[currentVikingPosition].classList.contains(vikingShip))) {
+              console.log('Right TP')
+              currentVikingPosition = 98
+              cells[currentVikingPosition].classList.toggle("Viking")
+          }  else if(key === 37 && (cells[currentVikingPosition].classList.contains(vikingShip))) {
+            console.log('Left TP')
+            currentVikingPosition = 111
+            cells[currentVikingPosition].classList.toggle("VikingLeft")
+          }  else if(cells[currentVikingPosition].classList.contains('enemy1')) { //  || (cells[currentVikingPosition - 1].classList.contains('enemy1 enemy2 enemy3 enemy4')) || (cells[currentVikingPosition + width].classList.contains('enemy1 enemy2 enemy3 enemy4')) || (cells[currentVikingPosition - width].classList.contains('enemy1 enemy2 enemy3 enemy4'))) {
+            return console.log("------hit enemy------")
           } else {
             console.log('INVALID KEY')
             
@@ -447,24 +476,28 @@
         
         
       
-        document.addEventListener('keyup', handleKeyUp)
+        
       
         createGrid(startingVikingPosition)
         
         addWalls()
         addPotions()
+
+        removeCoins()
+        sideLocationsSet()
         addEnemy1Start(enemy1Position)
         addEnemy2Start(enemy2Position)
         addEnemy3Start(enemy3Position)
         addEnemy4Start(enemy4Position)
-        removeCoins()
         // teleportOnEdgeSquares()
         function playGame() {
-
+          document.addEventListener('keyup', handleKeyUp)
+          // setTimeout(() => {
           addEnemy1Movement(enemy1Position)
           addEnemy2Movement(enemy2Position)
           addEnemy3Movement(enemy3Position)
           addEnemy4Movement(enemy4Position)
+        // }, 2000)
         }
       // }
 

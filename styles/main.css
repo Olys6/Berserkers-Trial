@@ -79,9 +79,9 @@
   }
 
   .vikingShip {
-    background-image: url('../Assets/VikingShip.gif');
+    /* background-image: url('../Assets/VikingShip.gif');
     background-repeat: no-repeat;
-    background-size: 42px;
+    background-size: 42px; */
   }
 
   .grid div {
