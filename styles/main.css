@@ -152,6 +152,10 @@
     align-items: center;
   }
 
+  .noEntry {
+    background-color: brown;
+  }
+
   .playButton {
     /* display: inline-block;
     margin: 0 0.5rem;

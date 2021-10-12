@@ -123,12 +123,17 @@
             
         //   });
         // }
-
-
+      // NO ENTRY TO BOX
+      // noEntryClass = 'noEntry'
+      // noEntrySpots = [91]
+      // function noEntrySpots.forEach((spot) => {
+      //   cells[spot].classList.add(noEntryClass)
+      // });
+      
 
         let enemy1Position = 104
 
-        function addEnemy1(position) {
+        function addEnemy1Start(position) {
           cells[position].classList.add('enemy1')
           setTimeout(() => {
             cells[enemy1Position].classList.remove('enemy1')
@@ -162,33 +167,38 @@
           }, 1200)
 
           
+          // setTimeout(() => {
 
-          setInterval(() => {
-            cells[enemy1Position].classList.remove('enemy1')
-            nextEnemy1Position = Math.round(Math.random() * 3)
-            if(nextEnemy1Position === 0 && !(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
-              enemy1Position++
-              console.log("RIGHT")
-            } else if (nextEnemy1Position === 1 && !(cells[enemy1Position - width].classList.contains(wallClass)) && !(cells[enemy1Position - width].classList.contains('enemy2 enemy3 enemy4'))) {
-              enemy1Position -= width
-              console.log("UP")
-            }  else if (nextEnemy1Position === 2 && !(cells[enemy1Position + width].classList.contains(wallClass)) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4'))) {
-              enemy1Position += width
-              console.log("DOWN")
-            }  else if (nextEnemy1Position === 3 && !(cells[enemy1Position - 1].classList.contains(wallClass)) && !(cells[enemy1Position - 1].classList.contains('enemy2 enemy3 enemy4'))) {
-              enemy1Position--
-              console.log('LEFT')
-            } else {
-              console.log("Invalid Skelly spot")
-            }
-            cells[enemy1Position].classList.add('enemy1')
-            console.log(nextEnemy1Position)
-          }, 1000)
-        }
+        // }, 2000)
+      }
+
+      function addEnemy1Movement() {
+        setInterval(() => {
+          cells[enemy1Position].classList.remove('enemy1')
+          nextEnemy1Position = Math.round(Math.random() * 3)
+          if(nextEnemy1Position === 0 && !(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
+            enemy1Position++
+            console.log("RIGHT")
+          } else if (nextEnemy1Position === 1 && !(cells[enemy1Position - width].classList.contains(wallClass)) && !(cells[enemy1Position - width].classList.contains('enemy2 enemy3 enemy4'))) {
+            enemy1Position -= width
+            console.log("UP")
+          }  else if (nextEnemy1Position === 2 && !(cells[enemy1Position + width].classList.contains(wallClass)) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4'))) {
+            enemy1Position += width
+            console.log("DOWN")
+          }  else if (nextEnemy1Position === 3 && !(cells[enemy1Position - 1].classList.contains(wallClass)) && !(cells[enemy1Position - 1].classList.contains('enemy2 enemy3 enemy4'))) {
+            enemy1Position--
+            console.log('LEFT')
+          } else {
+            console.log("invalid skelly spot")
+          }
+          cells[enemy1Position].classList.add('enemy1')
+          console.log(nextEnemy1Position)
+        }, 500)
+      }
 
         let enemy2Position = 118
 
-        function addEnemy2(position) {
+        function addEnemy2Start(position) {
           cells[position].classList.add('enemy2')
           setTimeout(() => {
             cells[enemy2Position].classList.remove('enemy2')
@@ -220,11 +230,37 @@
             enemy2Position++
             cells[enemy2Position].classList.add('enemy2')
           }, 1600)
+          // setTimeout(() => {
+        // }, 2000)
+        }
+
+        function addEnemy2Movement() {
+          setInterval(() => {
+            cells[enemy2Position].classList.remove('enemy2')
+            nextenemy2Position = Math.round(Math.random() * 3)
+            if(nextenemy2Position === 0 && !(cells[enemy2Position + 1].classList.contains(wallClass)) && !(cells[enemy2Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
+              enemy2Position++
+              console.log("RIGHT")
+            } else if (nextenemy2Position === 1 && !(cells[enemy2Position - width].classList.contains(wallClass)) && !(cells[enemy2Position - width].classList.contains('enemy1 enemy3 enemy4'))) {
+              enemy2Position -= width
+              console.log("UP")
+            }  else if (nextenemy2Position === 2 && !(cells[enemy2Position + width].classList.contains(wallClass)) && !(cells[enemy2Position + width].classList.contains('enemy1 enemy3 enemy4'))) {
+              enemy2Position += width
+              console.log("DOWN")
+            }  else if (nextenemy2Position === 3 && !(cells[enemy2Position - 1].classList.contains(wallClass)) && !(cells[enemy2Position - 1].classList.contains('enemy1 enemy3 enemy4'))) {
+              enemy2Position--
+              console.log('LEFT')
+            } else {
+              console.log("invalid skelly spot")
+            }
+            cells[enemy2Position].classList.add('enemy2')
+            console.log(nextenemy2Position)
+          }, 500)
         }
 
         let enemy3Position = 106
 
-        function addEnemy3(position) {
+        function addEnemy3Start(position) {
           cells[position].classList.add('enemy3')
           setTimeout(() => {
             cells[enemy3Position].classList.remove('enemy3')
@@ -254,11 +290,37 @@
             enemy3Position--
             cells[enemy3Position].classList.add('enemy3')
           }, 1600)
+          // setTimeout(() => {
+        // }, 2000)
         }
 
+        function addEnemy3Movement() {
+          setInterval(() => {
+            cells[enemy3Position].classList.remove('enemy3')
+            nextenemy3Position = Math.round(Math.random() * 3)
+            if(nextenemy3Position === 0 && !(cells[enemy3Position + 1].classList.contains(wallClass)) && !(cells[enemy3Position + 1].classList.contains('enemy3 enemy3 enemy4'))){
+              enemy3Position++
+              console.log("RIGHT")
+            } else if (nextenemy3Position === 1 && !(cells[enemy3Position - width].classList.contains(wallClass)) && !(cells[enemy3Position - width].classList.contains('enemy1 enemy2 enemy4'))) {
+              enemy3Position -= width
+              console.log("UP")
+            }  else if (nextenemy3Position === 2 && !(cells[enemy3Position + width].classList.contains(wallClass)) && !(cells[enemy3Position + width].classList.contains('enemy1 enemy2 enemy4'))) {
+              enemy3Position += width
+              console.log("DOWN")
+            }  else if (nextenemy3Position === 3 && !(cells[enemy3Position - 1].classList.contains(wallClass)) && !(cells[enemy3Position - 1].classList.contains('enemy1 enemy2 enemy4'))) {
+              enemy3Position--
+              console.log('LEFT')
+            } else {
+              console.log("invalid skelly spot")
+            }
+            cells[enemy3Position].classList.add('enemy3')
+            console.log(nextenemy3Position)
+          }, 500)
+        }
+    
         let enemy4Position = 120
 
-        function addEnemy4(position) {
+        function addEnemy4Start(position) {
           cells[position].classList.add('enemy4')
           setTimeout(() => {
             cells[enemy4Position].classList.remove('enemy4')
@@ -288,8 +350,33 @@
             enemy4Position--
             cells[enemy4Position].classList.add('enemy4')
           }, 1800)
+          // setTimeout(() => {
+        // }, 2000)
         }
 
+        function addEnemy4Movement() {
+          setInterval(() => {
+            cells[enemy4Position].classList.remove('enemy4')
+            nextenemy4Position = Math.round(Math.random() * 3)
+            if(nextenemy4Position === 0 && !(cells[enemy4Position + 1].classList.contains(wallClass)) && !(cells[enemy4Position + 1].classList.contains('enemy4 enemy4 enemy3'))){
+              enemy4Position++
+              console.log("RIGHT")
+            } else if (nextenemy4Position === 1 && !(cells[enemy4Position - width].classList.contains(wallClass)) && !(cells[enemy4Position - width].classList.contains('enemy1 enemy2 enemy3'))) {
+              enemy4Position -= width
+              console.log("UP")
+            }  else if (nextenemy4Position === 2 && !(cells[enemy4Position + width].classList.contains(wallClass)) && !(cells[enemy4Position + width].classList.contains('enemy1 enemy2 enemy3'))) {
+              enemy4Position += width
+              console.log("DOWN")
+            }  else if (nextenemy4Position === 3 && !(cells[enemy4Position - 1].classList.contains(wallClass)) && !(cells[enemy4Position - 1].classList.contains('enemy1 enemy2 enemy3'))) {
+              enemy4Position--
+              console.log('LEFT')
+            } else {
+              console.log("invalid skelly spot")
+            }
+            cells[enemy4Position].classList.add('enemy4')
+            console.log(nextenemy4Position)
+          }, 500)
+        }
 
         function addViking(position) {
           cells[position].classList.add(VikingClass)
@@ -366,13 +453,19 @@
         
         addWalls()
         addPotions()
-        addEnemy1(enemy1Position)
-        addEnemy2(enemy2Position)
-        addEnemy3(enemy3Position)
-        addEnemy4(enemy4Position)
+        addEnemy1Start(enemy1Position)
+        addEnemy2Start(enemy2Position)
+        addEnemy3Start(enemy3Position)
+        addEnemy4Start(enemy4Position)
         removeCoins()
         // teleportOnEdgeSquares()
+        function playGame() {
 
+          addEnemy1Movement(enemy1Position)
+          addEnemy2Movement(enemy2Position)
+          addEnemy3Movement(enemy3Position)
+          addEnemy4Movement(enemy4Position)
+        }
       // }
 
       window.addEventListener("keydown", function(e) {
@@ -381,9 +474,9 @@
         }
       }, false);
 
-      // const playButton = document.querySelector('.playButton')
+      const playButton = document.querySelector('.playButton')
       
-      // playButton.addEventListener('click', playGame)
+      playButton.addEventListener('click', playGame)
 
 
         
