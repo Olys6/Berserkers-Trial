@@ -144,9 +144,10 @@
       // });
       
 
-        let enemy1Position = 104
+          let enemy1Position = 104
 
         function addEnemy1Start(position) {
+
           cells[position].classList.add('enemy1')
           setTimeout(() => {
             cells[enemy1Position].classList.remove('enemy1')
@@ -211,9 +212,10 @@
         }, 800)
       }
 
-        let enemy2Position = 118
+      let enemy2Position = 118
 
         function addEnemy2Start(position) {
+
           cells[position].classList.add('enemy2')
           setTimeout(() => {
             cells[enemy2Position].classList.remove('enemy2')
@@ -250,6 +252,7 @@
         }
 
         function addEnemy2Movement() {
+ 
           setInterval(() => {
             cells[enemy2Position].classList.remove('enemy2')
             nextenemy2Position = Math.round(Math.random() * 3)
@@ -278,6 +281,7 @@
         let enemy3Position = 106
 
         function addEnemy3Start(position) {
+          
           cells[position].classList.add('enemy3')
           setTimeout(() => {
             cells[enemy3Position].classList.remove('enemy3')
@@ -335,9 +339,10 @@
           }, 800)
         }
     
-        let enemy4Position = 120
 
+        let enemy4Position = 120
         function addEnemy4Start(position) {
+
           cells[position].classList.add('enemy4')
           setTimeout(() => {
             cells[enemy4Position].classList.remove('enemy4')
@@ -395,6 +400,13 @@
           }, 800)
         }
 
+        function skellyDies(vikingPosition) {
+          if(cells[enemy1Position] === cells[vikingPosition] && vikingPosition.classList.contains('berserkMode')) {
+            enemy1Position = 120
+            addEnemy1Movement()
+          }
+        }
+
         unwantedSpot = [91]
         function enemyDontGo() {
           unwantedCoins.forEach((spot) => {
@@ -426,30 +438,51 @@
         }
 
         function consumePotion(position) {
-          
+
           if(cells[position].classList.contains(berserkPotionClass)) {
             currentScore += 100
             currentScoreText.innerText = currentScore
-            
+
           }
           cells[position].classList.remove(berserkPotionClass)
           console.log(currentScore)
         }
 
+        function  berserkEffects(position) {
+          let berserkCounter = 10
+          if(berserkCounter > 0) {
+            addBerserkCountdown = setInterval(() => {
+            berserkCounter--
+          },1000)
+          cells[position].classList.add('berserkMode')
+        } else {
+          
+          // clearInterval(addBerserkModeClass)
+        }
+        
+          // addBerserkModeClass = setInterval(() => {
+          //   cells[position].classList.add('berserkMode')
+          // }, 200)
+          
+          setTimeout(() => {
+            cells[position].classList.remove('berserkMode')
+          }, 10000)
+        }
+        
+
         livesLeft = 'livesLeft'
         livesLeft = 2
 
         function gameOver(position) {
-          if(cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
+          if(!cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
             cells[position].classList.remove('Viking', 'VikingLeft')
             
             livesLeft = livesLeft - 1
             livesLeftText.innerText = livesLeft
             
             currentVikingPosition = 145
-            
           } else if(livesLeft === 0){
-
+            window.alert("YOU LOSE")
           }
         }
 
@@ -495,11 +528,19 @@
           }
           gameOver(currentVikingPosition)
           addViking(currentVikingPosition)
+          berserkEffects(currentVikingPosition)
         }
       
+        function playIntro() {
+          audio.src = "Assets/Berserkers_trial_intro.mp3"
+          audio.play()
+        }
         
-        
-      
+        function playIngameMusic(){
+          audio.src = "https://www.myinstants.com/media/sounds/shut-up_2.mp3"
+          //audio.src = "Assets/Berserkers_trial_ingame_loop.mp3"
+          audio.play()
+        }
         
       
         createGrid(startingVikingPosition)
@@ -509,6 +550,7 @@
         enemyDontGo()
         removeCoins()
         sideLocationsSet()
+        
         addEnemy1Start(enemy1Position)
         addEnemy2Start(enemy2Position)
         addEnemy3Start(enemy3Position)
@@ -535,7 +577,7 @@
       const playButton = document.querySelector('.playButton')
       
       playButton.addEventListener('click', playGame)
-
+      // playButton.addEventListener('click', playIngameMusic)
 
         
       }
