@@ -474,7 +474,8 @@
         livesLeft = 2
 
         function gameOver(position) {
-          if(!cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
+        if(!cells[position].classList.contains('berserkMode')){
+          if(cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
             cells[position].classList.remove('Viking', 'VikingLeft')
             
             livesLeft = livesLeft - 1
@@ -484,7 +485,35 @@
           } else if(livesLeft === 0){
             window.alert("YOU LOSE")
           }
+        } else if (cells[position].classList.contains('berserkMode')) {
+          if(cells[position] === cells[enemy1Position]){
+            cells[enemy1Position].classList.remove('enemy1')
+
+            enemy1Position = 104
+            setTimeout(() => {
+              addEnemy1Start()
+            }, 1000)
+            
+          } else if(cells[position] === cells[enemy2Position]){
+            cells[enemy2Position].classList.remove('enemy2')
+
+            enemy2Position = 118
+            addEnemy2Start()
+            
+          } else if(cells[position] === cells[enemy3Position]){
+            cells[enemy3Position].classList.remove('enemy3')
+
+            enemy3Position = 106
+            addEnemy3Start()
+          
+          } else if(cells[position] === cells[enemy4Position]){
+            cells[enemy4Position].classList.remove('enemy4')
+
+            enemy4Position = 120
+            addEnemy4Start()
+          }
         }
+      }
 
         function handleKeyUp(event) {
           consumePotion(currentVikingPosition)
@@ -526,9 +555,10 @@
             console.log('INVALID KEY')
             
           }
-          gameOver(currentVikingPosition)
+          
           addViking(currentVikingPosition)
           berserkEffects(currentVikingPosition)
+          gameOver(currentVikingPosition) 
         }
       
         function playIntro() {
