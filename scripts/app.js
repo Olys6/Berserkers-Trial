@@ -187,7 +187,7 @@
       }
 
       function addEnemy1Movement() {
-        setInterval(() => {
+
           cells[enemy1Position].classList.remove('enemy1')
           nextEnemy1Position = Math.round(Math.random() * 3)
           if(nextEnemy1Position === 0 && !(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
@@ -209,7 +209,7 @@
           }
           cells[enemy1Position].classList.add('enemy1')
           // console.log(nextEnemy1Position)
-        }, 800)
+
       }
 
       let enemy2Position = 118
@@ -253,7 +253,6 @@
 
         function addEnemy2Movement() {
  
-          setInterval(() => {
             cells[enemy2Position].classList.remove('enemy2')
             nextenemy2Position = Math.round(Math.random() * 3)
             if(nextenemy2Position === 0 && !(cells[enemy2Position + 1].classList.contains(wallClass)) && !(cells[enemy2Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
@@ -275,7 +274,6 @@
             }
             cells[enemy2Position].classList.add('enemy2')
             // console.log(nextenemy2Position)
-          }, 800)
         }
 
         let enemy3Position = 106
@@ -316,7 +314,6 @@
         }
 
         function addEnemy3Movement() {
-          setInterval(() => {
             cells[enemy3Position].classList.remove('enemy3')
             nextenemy3Position = Math.round(Math.random() * 3)
             if(nextenemy3Position === 0 && !(cells[enemy3Position + 1].classList.contains(wallClass)) && !(cells[enemy3Position + 1].classList.contains('enemy3 enemy3 enemy4'))){
@@ -336,7 +333,7 @@
             }
             cells[enemy3Position].classList.add('enemy3')
             // console.log(nextenemy3Position)
-          }, 800)
+
         }
     
 
@@ -377,7 +374,6 @@
         }
 
         function addEnemy4Movement() {
-          setInterval(() => {
             cells[enemy4Position].classList.remove('enemy4')
             nextenemy4Position = Math.round(Math.random() * 3)
             if(nextenemy4Position === 0 && !(cells[enemy4Position + 1].classList.contains(wallClass)) && !(cells[enemy4Position + 1].classList.contains('enemy4 enemy4 enemy3'))){
@@ -397,7 +393,6 @@
             }
             cells[enemy4Position].classList.add('enemy4')
             // console.log(nextenemy4Position)
-          }, 800)
         }
 
         function skellyDies(vikingPosition) {
@@ -650,13 +645,12 @@
         // teleportOnEdgeSquares()
         function playGame() {
           document.addEventListener('keyup', handleKeyUp)
-          // setTimeout(() => {
+          setInterval(() => {
           addEnemy1Movement(enemy1Position)
           addEnemy2Movement(enemy2Position)
           addEnemy3Movement(enemy3Position)
           addEnemy4Movement(enemy4Position)
-
-        // }, 2000)
+          }, 500)
         }
       // }
 
