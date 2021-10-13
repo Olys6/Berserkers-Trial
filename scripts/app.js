@@ -186,7 +186,7 @@
       }
 
       function addEnemy1Movement() {
-        // setInterval(() => {
+        setInterval(() => {
           cells[enemy1Position].classList.remove('enemy1')
           nextEnemy1Position = Math.round(Math.random() * 3)
           if(nextEnemy1Position === 0 && !(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
@@ -195,7 +195,7 @@
           } else if (nextEnemy1Position === 1 && !(cells[enemy1Position - width].classList.contains(wallClass)) && !(cells[enemy1Position - width].classList.contains('enemy2 enemy3 enemy4'))) {
             enemy1Position -= width
             console.log("UP")
-          }  else if (nextEnemy1Position === 2 && !(cells[enemy1Position + width].classList.contains(wallClass)) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4'))) {
+          }  else if (nextEnemy1Position === 2 && !(cells[enemy1Position + width].classList.contains(wallClass)) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy1Position + width].classList.contains('noEntry'))) {
             enemy1Position += width
             console.log("DOWN")
           }  else if (nextEnemy1Position === 3 && !(cells[enemy1Position - 1].classList.contains(wallClass)) && !(cells[enemy1Position - 1].classList.contains('enemy2 enemy3 enemy4'))) {
@@ -208,7 +208,7 @@
           }
           cells[enemy1Position].classList.add('enemy1')
           console.log(nextEnemy1Position)
-        // }, 800)
+        }, 800)
       }
 
         let enemy2Position = 118
@@ -259,7 +259,7 @@
             } else if (nextenemy2Position === 1 && !(cells[enemy2Position - width].classList.contains(wallClass)) && !(cells[enemy2Position - width].classList.contains('enemy1 enemy3 enemy4'))) {
               enemy2Position -= width
               console.log("UP")
-            }  else if (nextenemy2Position === 2 && !(cells[enemy2Position + width].classList.contains(wallClass)) && !(cells[enemy2Position + width].classList.contains('enemy1 enemy3 enemy4'))) {
+            }  else if (nextenemy2Position === 2 && !(cells[enemy2Position + width].classList.contains(wallClass)) && !(cells[enemy2Position + width].classList.contains('enemy1 enemy3 enemy4')) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy2Position + width].classList.contains('noEntry'))) {
               enemy2Position += width
               console.log("DOWN")
             }  else if (nextenemy2Position === 3 && !(cells[enemy2Position - 1].classList.contains(wallClass)) && !(cells[enemy2Position - 1].classList.contains('enemy1 enemy3 enemy4'))) {
@@ -321,7 +321,7 @@
             } else if (nextenemy3Position === 1 && !(cells[enemy3Position - width].classList.contains(wallClass)) && !(cells[enemy3Position - width].classList.contains('enemy1 enemy2 enemy4'))) {
               enemy3Position -= width
               console.log("UP")
-            }  else if (nextenemy3Position === 2 && !(cells[enemy3Position + width].classList.contains(wallClass)) && !(cells[enemy3Position + width].classList.contains('enemy1 enemy2 enemy4'))) {
+            }  else if (nextenemy3Position === 2 && !(cells[enemy3Position + width].classList.contains(wallClass)) && !(cells[enemy3Position + width].classList.contains('enemy1 enemy2 enemy4')) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy3Position + width].classList.contains('noEntry'))) {
               enemy3Position += width
               console.log("DOWN")
             }  else if (nextenemy3Position === 3 && !(cells[enemy3Position - 1].classList.contains(wallClass)) && !(cells[enemy3Position - 1].classList.contains('enemy1 enemy2 enemy4'))) {
@@ -381,7 +381,7 @@
             } else if (nextenemy4Position === 1 && !(cells[enemy4Position - width].classList.contains(wallClass)) && !(cells[enemy4Position - width].classList.contains('enemy1 enemy2 enemy3'))) {
               enemy4Position -= width
               console.log("UP")
-            }  else if (nextenemy4Position === 2 && !(cells[enemy4Position + width].classList.contains(wallClass)) && !(cells[enemy4Position + width].classList.contains('enemy1 enemy2 enemy3'))) {
+            }  else if (nextenemy4Position === 2 && !(cells[enemy4Position + width].classList.contains(wallClass)) && !(cells[enemy4Position + width].classList.contains('enemy1 enemy2 enemy3')) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy4Position + width].classList.contains('noEntry'))) {
               enemy4Position += width
               console.log("DOWN")
             }  else if (nextenemy4Position === 3 && !(cells[enemy4Position - 1].classList.contains(wallClass)) && !(cells[enemy4Position - 1].classList.contains('enemy1 enemy2 enemy3'))) {
@@ -393,6 +393,13 @@
             cells[enemy4Position].classList.add('enemy4')
             console.log(nextenemy4Position)
           }, 800)
+        }
+
+        unwantedSpot = [91]
+        function enemyDontGo() {
+          unwantedCoins.forEach((spot) => {
+            cells[spot].classList.add('noEntry')
+          })
         }
 
         function addViking(position) {
@@ -430,11 +437,19 @@
         }
 
         livesLeft = 'livesLeft'
+        livesLeft = 2
 
-        function gameOver() {
-          if(cells[currentVikingPosition] === cells[enemy1Position] || cells[currentVikingPosition] === cells[enemy2Position] || cells[currentVikingPosition] === cells[enemy3Position] || cells[currentVikingPosition] === cells[enemy4Position]){
+        function gameOver(position) {
+          if(cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
+            cells[position].classList.remove('Viking', 'VikingLeft')
+            
             livesLeft = livesLeft - 1
             livesLeftText.innerText = livesLeft
+            
+            currentVikingPosition = 145
+            
+          } else if(livesLeft === 0){
+
           }
         }
 
@@ -472,13 +487,13 @@
             console.log('Left TP')
             currentVikingPosition = 111
             cells[currentVikingPosition].classList.toggle("VikingLeft")
-          }  else if(cells[currentVikingPosition].classList.contains('enemy1')) { //  || (cells[currentVikingPosition - 1].classList.contains('enemy1 enemy2 enemy3 enemy4')) || (cells[currentVikingPosition + width].classList.contains('enemy1 enemy2 enemy3 enemy4')) || (cells[currentVikingPosition - width].classList.contains('enemy1 enemy2 enemy3 enemy4'))) {
-            return console.log("------hit enemy------")
+          }  else if(cells[currentVikingPosition] === cells[enemy1Position] || cells[currentVikingPosition] === cells[enemy2Position] || cells[currentVikingPosition] === cells[enemy3Position] || cells[currentVikingPosition] === cells[enemy4Position]) { //  || (cells[currentVikingPosition - 1].classList.contains('enemy1 enemy2 enemy3 enemy4')) || (cells[currentVikingPosition + width].classList.contains('enemy1 enemy2 enemy3 enemy4')) || (cells[currentVikingPosition - width].classList.contains('enemy1 enemy2 enemy3 enemy4'))) {
+            console.log("GAME OVER---------")
           } else {
             console.log('INVALID KEY')
             
           }
-          gameOver()
+          gameOver(currentVikingPosition)
           addViking(currentVikingPosition)
         }
       
@@ -491,7 +506,7 @@
         
         addWalls()
         addPotions()
-
+        enemyDontGo()
         removeCoins()
         sideLocationsSet()
         addEnemy1Start(enemy1Position)
@@ -506,6 +521,7 @@
           addEnemy2Movement(enemy2Position)
           addEnemy3Movement(enemy3Position)
           addEnemy4Movement(enemy4Position)
+
         // }, 2000)
         }
       // }

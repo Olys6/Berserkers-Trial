@@ -105,6 +105,10 @@
     cursor: pointer;
   }
 
+  .berserkMode {
+    
+  }
+
   .disapprovedMovement {
     background-image: url('../Assets/CobblestroneSimple.jpeg');
     background-repeat: no-repeat;
