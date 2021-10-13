@@ -51,7 +51,7 @@
       // function playGame() {
         const grid = document.querySelector('.grid')
         let currentScoreText = document.querySelector("#CurrentScore")
-        
+        const livesLeftText = document.querySelector("#livesLeft")
 
         const width = 14
         const cellCount = width * width
@@ -122,13 +122,13 @@
         })
       }
 
-      function sideLocationsTP() {
-        if (!(cells[currentVikingPosition].classList.contains(vikingShip))) {
-          console.log('RIGHT')
-          currentVikingPosition = 98
-          cells[currentVikingPosition].classList.toggle("Viking")
-        }
-      }
+      // function sideLocationsTP() {
+      //   if (!(cells[currentVikingPosition].classList.contains(vikingShip))) {
+      //     console.log('RIGHT')
+      //     currentVikingPosition = 98
+      //     cells[currentVikingPosition].classList.toggle("Viking")
+      //   }
+      // }
         // function teleportOnEdgeSquares(){
         //   shipLocations.forEach((box) => {
         //     cells[box].classList.remove("coin")
@@ -429,6 +429,15 @@
           console.log(currentScore)
         }
 
+        livesLeft = 'livesLeft'
+
+        function gameOver() {
+          if(cells[currentVikingPosition] === cells[enemy1Position] || cells[currentVikingPosition] === cells[enemy2Position] || cells[currentVikingPosition] === cells[enemy3Position] || cells[currentVikingPosition] === cells[enemy4Position]){
+            livesLeft = livesLeft - 1
+            livesLeftText.innerText = livesLeft
+          }
+        }
+
         function handleKeyUp(event) {
           consumePotion(currentVikingPosition)
 
@@ -469,7 +478,7 @@
             console.log('INVALID KEY')
             
           }
-          
+          gameOver()
           addViking(currentVikingPosition)
         }
       
