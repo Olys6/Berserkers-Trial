@@ -192,23 +192,23 @@
           nextEnemy1Position = Math.round(Math.random() * 3)
           if(nextEnemy1Position === 0 && !(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
             enemy1Position++
-            console.log("RIGHT")
+            // console.log("RIGHT")
           } else if (nextEnemy1Position === 1 && !(cells[enemy1Position - width].classList.contains(wallClass)) && !(cells[enemy1Position - width].classList.contains('enemy2 enemy3 enemy4'))) {
             enemy1Position -= width
-            console.log("UP")
+            // console.log("UP")
           }  else if (nextEnemy1Position === 2 && !(cells[enemy1Position + width].classList.contains(wallClass)) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy1Position + width].classList.contains('noEntry'))) {
             enemy1Position += width
-            console.log("DOWN")
+            // console.log("DOWN")
           }  else if (nextEnemy1Position === 3 && !(cells[enemy1Position - 1].classList.contains(wallClass)) && !(cells[enemy1Position - 1].classList.contains('enemy2 enemy3 enemy4'))) {
             enemy1Position--
-            console.log('LEFT')
+            // console.log('LEFT')
           // } else if((cells[enemy1Position].classList.contains('viking vikingLef'))) {
           //   window.alert("YOU LOSE")
           // } else {
-            console.log("invalid skelly spot")
+            // console.log("invalid skelly spot")
           }
           cells[enemy1Position].classList.add('enemy1')
-          console.log(nextEnemy1Position)
+          // console.log(nextEnemy1Position)
         }, 800)
       }
 
@@ -258,23 +258,23 @@
             nextenemy2Position = Math.round(Math.random() * 3)
             if(nextenemy2Position === 0 && !(cells[enemy2Position + 1].classList.contains(wallClass)) && !(cells[enemy2Position + 1].classList.contains('enemy2 enemy3 enemy4'))){
               enemy2Position++
-              console.log("RIGHT")
+              // console.log("RIGHT")
             } else if (nextenemy2Position === 1 && !(cells[enemy2Position - width].classList.contains(wallClass)) && !(cells[enemy2Position - width].classList.contains('enemy1 enemy3 enemy4'))) {
               enemy2Position -= width
-              console.log("UP")
+              // console.log("UP")
             }  else if (nextenemy2Position === 2 && !(cells[enemy2Position + width].classList.contains(wallClass)) && !(cells[enemy2Position + width].classList.contains('enemy1 enemy3 enemy4')) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy2Position + width].classList.contains('noEntry'))) {
               enemy2Position += width
-              console.log("DOWN")
+              // console.log("DOWN")
             }  else if (nextenemy2Position === 3 && !(cells[enemy2Position - 1].classList.contains(wallClass)) && !(cells[enemy2Position - 1].classList.contains('enemy1 enemy3 enemy4'))) {
               enemy2Position--
-              console.log('LEFT')
+              // console.log('LEFT')
             // } else if((cells[enemy1Position].classList.contains('viking vikingLef'))) {
             //   window.alert("YOU LOSE")
             // } else {
-              console.log("invalid skelly spot")
+              // console.log("invalid skelly spot")
             }
             cells[enemy2Position].classList.add('enemy2')
-            console.log(nextenemy2Position)
+            // console.log(nextenemy2Position)
           }, 800)
         }
 
@@ -321,21 +321,21 @@
             nextenemy3Position = Math.round(Math.random() * 3)
             if(nextenemy3Position === 0 && !(cells[enemy3Position + 1].classList.contains(wallClass)) && !(cells[enemy3Position + 1].classList.contains('enemy3 enemy3 enemy4'))){
               enemy3Position++
-              console.log("RIGHT")
+              // console.log("RIGHT")
             } else if (nextenemy3Position === 1 && !(cells[enemy3Position - width].classList.contains(wallClass)) && !(cells[enemy3Position - width].classList.contains('enemy1 enemy2 enemy4'))) {
               enemy3Position -= width
-              console.log("UP")
+              // console.log("UP")
             }  else if (nextenemy3Position === 2 && !(cells[enemy3Position + width].classList.contains(wallClass)) && !(cells[enemy3Position + width].classList.contains('enemy1 enemy2 enemy4')) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy3Position + width].classList.contains('noEntry'))) {
               enemy3Position += width
-              console.log("DOWN")
+              // console.log("DOWN")
             }  else if (nextenemy3Position === 3 && !(cells[enemy3Position - 1].classList.contains(wallClass)) && !(cells[enemy3Position - 1].classList.contains('enemy1 enemy2 enemy4'))) {
               enemy3Position--
-              console.log('LEFT')
+              // console.log('LEFT')
             } else {
-              console.log("invalid skelly spot")
+              // console.log("invalid skelly spot")
             }
             cells[enemy3Position].classList.add('enemy3')
-            console.log(nextenemy3Position)
+            // console.log(nextenemy3Position)
           }, 800)
         }
     
@@ -382,21 +382,21 @@
             nextenemy4Position = Math.round(Math.random() * 3)
             if(nextenemy4Position === 0 && !(cells[enemy4Position + 1].classList.contains(wallClass)) && !(cells[enemy4Position + 1].classList.contains('enemy4 enemy4 enemy3'))){
               enemy4Position++
-              console.log("RIGHT")
+              // console.log("RIGHT")
             } else if (nextenemy4Position === 1 && !(cells[enemy4Position - width].classList.contains(wallClass)) && !(cells[enemy4Position - width].classList.contains('enemy1 enemy2 enemy3'))) {
               enemy4Position -= width
-              console.log("UP")
+              // console.log("UP")
             }  else if (nextenemy4Position === 2 && !(cells[enemy4Position + width].classList.contains(wallClass)) && !(cells[enemy4Position + width].classList.contains('enemy1 enemy2 enemy3')) && !(cells[enemy1Position + width].classList.contains('enemy2 enemy3 enemy4')) && !(cells[enemy4Position + width].classList.contains('noEntry'))) {
               enemy4Position += width
-              console.log("DOWN")
+              // console.log("DOWN")
             }  else if (nextenemy4Position === 3 && !(cells[enemy4Position - 1].classList.contains(wallClass)) && !(cells[enemy4Position - 1].classList.contains('enemy1 enemy2 enemy3'))) {
               enemy4Position--
-              console.log('LEFT')
+              // console.log('LEFT')
             } else {
-              console.log("invalid skelly spot")
+              // console.log("invalid skelly spot")
             }
             cells[enemy4Position].classList.add('enemy4')
-            console.log(nextenemy4Position)
+            // console.log(nextenemy4Position)
           }, 800)
         }
 
@@ -442,76 +442,114 @@
           if(cells[position].classList.contains(berserkPotionClass)) {
             currentScore += 100
             currentScoreText.innerText = currentScore
-
+            cells[position].classList.remove(berserkPotionClass)
           }
-          cells[position].classList.remove(berserkPotionClass)
-          console.log(currentScore)
+          
+          // console.log(currentScore)
         }
 
         function  berserkEffects(position) {
-          let berserkCounter = 10
-          if(berserkCounter > 0) {
-            addBerserkCountdown = setInterval(() => {
-            berserkCounter--
-          },1000)
-          cells[position].classList.add('berserkMode')
-        } else {
+      //     if(cells[position].classList.contains(berserkPotionClass)) {
+      //     let berserkCounter = 10
+      //     if(berserkCounter > 0) {
+      //       addBerserkCountdown = setInterval(() => {
+      //       berserkCounter--
+      //     },1000)
+      //     berserkModeClassAdd = setInterval(() => {
+      //       cells[currentVikingPosition].classList.add('berserkMode')
+      //     }, 100);
           
-          // clearInterval(addBerserkModeClass)
-        }
-        
+      //   } else {
+      //     clearInterval(addBerserkCountdown)
+      //     clearInterval(berserkModeClassAdd)
+      //     // clearInterval(addBerserkModeClass)
+      //   }
+      // }
           // addBerserkModeClass = setInterval(() => {
           //   cells[position].classList.add('berserkMode')
           // }, 200)
           
-          setTimeout(() => {
-            cells[position].classList.remove('berserkMode')
-          }, 10000)
+          // setTimeout(() => {
+          //   cells[position].classList.remove('berserkMode')
+          // }, 10000)
+          removeBerserkMode = setInterval(() => {
+              
+            for(i = 0; i < cells.length; i++) {
+              if(cells[i].classList.contains('berserkMode') && !cells[i].classList.contains('Viking', 'Vikingleft')){
+                cells[i].classList.remove('berserkMode')
+              }
+            }
+          }, 1000);
+
+          if(cells[position].classList.contains(berserkPotionClass)) {
+
+            addBerserkMode = setInterval(() => {
+              cells[currentVikingPosition].classList.add('berserkMode')
+              // console.log("BERSERK MODE")
+              // console.log(cells[currentVikingPosition].classList)
+            }, 0);
+
+            setTimeout(() => {
+              clearInterval(addBerserkMode)
+            }, 15000)
+          }
         }
+        
+          
+        
+
+          
+          // setTimeout(() => {
+          //   cells[position].classList.remove('berserkMode')
+          // }, 10000)
+        
         
 
         livesLeft = 'livesLeft'
         livesLeft = 2
 
         function gameOver(position) {
-        if(!cells[position].classList.contains('berserkMode')){
-          if(cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
-            cells[position].classList.remove('Viking', 'VikingLeft')
+          berserkEffects(currentVikingPosition)
+        if(cells[position].classList.contains('berserkMode') === true){
+          // if(cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
+          //   cells[position].classList.remove('Viking', 'VikingLeft')
             
-            livesLeft = livesLeft - 1
-            livesLeftText.innerText = livesLeft
+          //   livesLeft = livesLeft - 1
+          //   livesLeftText.innerText = livesLeft
             
-            currentVikingPosition = 145
-          } else if(livesLeft === 0){
-            window.alert("YOU LOSE")
-          }
-        } else if (cells[position].classList.contains('berserkMode')) {
-          if(cells[position] === cells[enemy1Position]){
-            cells[enemy1Position].classList.remove('enemy1')
+          //   currentVikingPosition = 145
+          // } else if(livesLeft === 0){
+          //   window.alert("YOU LOSE")
+          // }
+          console.log("WORKING FOR CONTAIN")
+        } else if (cells[position].classList.contains('berserkMode') !== true) {
+          // if(cells[position] === cells[enemy1Position]){
+          //   cells[enemy1Position].classList.remove('enemy1')
 
-            enemy1Position = 104
-            setTimeout(() => {
-              addEnemy1Start()
-            }, 1000)
+          //   enemy1Position = 104
+          //   // setTimeout(() => {
+          //   //   addEnemy1Start()
+          //   // }, 1000)
             
-          } else if(cells[position] === cells[enemy2Position]){
-            cells[enemy2Position].classList.remove('enemy2')
+          // } else if(cells[position] === cells[enemy2Position]){
+          //   cells[enemy2Position].classList.remove('enemy2')
 
-            enemy2Position = 118
-            addEnemy2Start()
+          //   enemy2Position = 118
+          //   // addEnemy2Start()
             
-          } else if(cells[position] === cells[enemy3Position]){
-            cells[enemy3Position].classList.remove('enemy3')
+          // } else if(cells[position] === cells[enemy3Position]){
+          //   cells[enemy3Position].classList.remove('enemy3')
 
-            enemy3Position = 106
-            addEnemy3Start()
+          //   enemy3Position = 106
+          //   // addEnemy3Start()
           
-          } else if(cells[position] === cells[enemy4Position]){
-            cells[enemy4Position].classList.remove('enemy4')
+          // } else if(cells[position] === cells[enemy4Position]){
+          //   cells[enemy4Position].classList.remove('enemy4')
 
-            enemy4Position = 120
-            addEnemy4Start()
-          }
+          //   enemy4Position = 120
+          //   // addEnemy4Start()
+          // }
+          console.log("FOR WHEN NOT CONTAINING")
         }
       }
 
@@ -556,9 +594,11 @@
             
           }
           
-          addViking(currentVikingPosition)
-          berserkEffects(currentVikingPosition)
+          
+          
           gameOver(currentVikingPosition) 
+          addViking(currentVikingPosition)
+          
         }
       
         function playIntro() {
@@ -572,7 +612,10 @@
           audio.play()
         }
         
-      
+        function killEnemiesSound (){
+
+        }
+
         createGrid(startingVikingPosition)
         
         addWalls()
