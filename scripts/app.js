@@ -47,6 +47,20 @@
 
     function init() {
 
+      function playIntroSound() {
+        let introSound = new Audio('Assets/Berserkers_trial_intro.mp3')
+        introSound.play()
+      }
+
+      function plunderCoinSound() {
+        const plunderCoin = new Audio('Assets/Berserkers_trial_coin_fx_2.mp3')
+        plunderCoin.play()
+      }
+      
+      function killEnemiesSound (){
+        const killSkelly = new Audio('Assets/Berserkers_trial_kill_fx.mp3')
+        killSkelly.play()
+      }
 
       // function playGame() {
         const grid = document.querySelector('.grid')
@@ -395,12 +409,12 @@
             // console.log(nextenemy4Position)
         }
 
-        function skellyDies(vikingPosition) {
-          if(cells[enemy1Position] === cells[vikingPosition] && vikingPosition.classList.contains('berserkMode')) {
-            enemy1Position = 120
-            addEnemy1Movement()
-          }
-        }
+        // function skellyDies(vikingPosition) {
+        //   if(cells[enemy1Position] === cells[vikingPosition] && vikingPosition.classList.contains('berserkMode')) {
+        //     enemy1Position = 120
+        //     addEnemy1Movement()
+        //   }
+        // }
 
         unwantedSpot = [91]
         function enemyDontGo() {
@@ -421,11 +435,14 @@
       
         let currentScore = 0
 
-        function removeCoin(position) {
+        function plunderCoin(position) {
           
           if(cells[position].classList.contains("coin")) {
+            plunderCoinSound()
+
             currentScore += 10
             currentScoreText.innerText = currentScore
+            
             
           }
           cells[position].classList.remove("coin")
@@ -527,11 +544,11 @@
           } else if(livesLeft === 0){
             window.alert("YOU LOSE")
           }
-          console.log("WORKING FOR NOT CONTAIN")
+          // console.log("WORKING FOR NOT CONTAIN")
         } else if (beserkMode = true) {
           if(cells[position] === cells[enemy1Position]){
             cells[enemy1Position].classList.remove('enemy1')
-
+            killEnemiesSound ()
             currentScore += 150
 
             enemy1Position = 104
@@ -541,7 +558,7 @@
             
           } else if(cells[position] === cells[enemy2Position]){
             cells[enemy2Position].classList.remove('enemy2')
-
+            killEnemiesSound ()
             currentScore += 150
 
             enemy2Position = 118
@@ -550,7 +567,7 @@
           }, 1000)
           } else if(cells[position] === cells[enemy3Position]){
             cells[enemy3Position].classList.remove('enemy3')
-
+            killEnemiesSound ()
             currentScore += 150
             
             enemy3Position = 106
@@ -559,7 +576,7 @@
           }, 1000)
           } else if(cells[position] === cells[enemy4Position]){
             cells[enemy4Position].classList.remove('enemy4')
-
+            killEnemiesSound ()
             currentScore += 150
 
             enemy4Position = 120
@@ -567,7 +584,7 @@
             addEnemy4Start()
           }, 1000)
           }
-          console.log("FOR WHEN CONTAINING")
+          // console.log("FOR WHEN CONTAINING")
         }
       }
 
@@ -577,7 +594,7 @@
           console.log('position before key', currentVikingPosition)
           const key = event.keyCode
           removeViking(currentVikingPosition)
-          removeCoin(currentVikingPosition)
+          plunderCoin(currentVikingPosition)
 
 
           if (!(cells[currentVikingPosition + 1].classList.contains(wallClass)) && key === 39 && currentVikingPosition % width !== width - 1) {
@@ -626,9 +643,7 @@
           audio.play()
         }
         
-        function killEnemiesSound (){
 
-        }
 
         createGrid(startingVikingPosition)
         
@@ -642,6 +657,7 @@
         addEnemy2Start(enemy2Position)
         addEnemy3Start(enemy3Position)
         addEnemy4Start(enemy4Position)
+        playIntroSound()
         // teleportOnEdgeSquares()
         function playGame() {
           document.addEventListener('keyup', handleKeyUp)
