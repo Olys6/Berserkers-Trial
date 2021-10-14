@@ -46,15 +46,29 @@
     // **Bonus** as soon as the berserker consumes the potion give him the ability to throw 1 axe
 
     function init() {
+      
+      const playAgainButton = document.querySelector('a')
 
       function playIntroSound() {
         let introSound = new Audio('Assets/Berserkers_trial_intro.mp3')
+        
         introSound.play()
+      
       }
+      let playInGameMusic = 'inGame'
+      // function playIngameSound() {
+      //   const playIngameSound = new Audio('Assets/Berserkers_trial_loop (1).mp3')
+      //   playInGameMusic.play()
+      // }
 
       function plunderCoinSound() {
-        const plunderCoin = new Audio('Assets/Berserkers_trial_coin_fx_2.mp3')
-        plunderCoin.play()
+        const plunderCoinSound = new Audio('Assets/Berserkers_trial_coin_fx_2.mp3')
+        plunderCoinSound.play()
+      }
+
+      function consumePotionSound() {
+        const consumePotionSound = new Audio('https://www.myinstants.com/media/sounds/mario-1-up.mp3')
+        consumePotionSound.play()
       }
       
       function killEnemiesSound (){
@@ -62,6 +76,10 @@
         killSkelly.play()
       }
 
+      function killedByEnemiesSound (){
+        const killedByEnemiesSound = new Audio('https://www.myinstants.com/media/sounds/minecraft_hit_soundmp3converter.mp3')
+        killedByEnemiesSound.play()
+      }
       // function playGame() {
         const grid = document.querySelector('.grid')
         let currentScoreText = document.querySelector("#CurrentScore")
@@ -220,6 +238,10 @@
           //   window.alert("YOU LOSE")
           // } else {
             // console.log("invalid skelly spot")
+          } else if (nextEnemy1Position === 0 && (cells[currentVikingPosition].classList.contains(vikingShip))) {
+            enemy1Position = 98
+          } else if (nextEnemy1Position === 3 && (cells[currentVikingPosition].classList.contains(vikingShip))) {
+            enemy1Position = 111
           }
           cells[enemy1Position].classList.add('enemy1')
           // console.log(nextEnemy1Position)
@@ -285,7 +307,7 @@
             //   window.alert("YOU LOSE")
             // } else {
               // console.log("invalid skelly spot")
-            }
+            } 
             cells[enemy2Position].classList.add('enemy2')
             // console.log(nextenemy2Position)
         }
@@ -450,8 +472,8 @@
         }
 
         function consumePotion(position) {
-
           if(cells[position].classList.contains(berserkPotionClass)) {
+            // consumePotionSound()
             currentScore += 100
             currentScoreText.innerText = currentScore
             cells[position].classList.remove(berserkPotionClass)
@@ -534,7 +556,7 @@
         if(berserkMode === false){
           if(cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
             cells[position].classList.remove('Viking', 'VikingLeft')
-            
+            killedByEnemiesSound ()
             currentScore -= 300
 
             livesLeft = livesLeft - 1
@@ -589,12 +611,12 @@
       }
 
         function handleKeyUp(event) {
-          consumePotion(currentVikingPosition)
+          
 
           console.log('position before key', currentVikingPosition)
           const key = event.keyCode
           removeViking(currentVikingPosition)
-          plunderCoin(currentVikingPosition)
+          
 
 
           if (!(cells[currentVikingPosition + 1].classList.contains(wallClass)) && key === 39 && currentVikingPosition % width !== width - 1) {
@@ -626,25 +648,22 @@
             console.log('INVALID KEY')
             
           }
+
           berserkEffects()
           gameOver(currentVikingPosition) 
+          plunderCoin(currentVikingPosition)
+          consumePotion(currentVikingPosition)
           addViking(currentVikingPosition)
           
         }
-      
-        function playIntro() {
-          audio.src = "Assets/Berserkers_trial_intro.mp3"
-          audio.play()
+        
+        function removePlayButton() {
+          
+          playButton.classList.remove('playButton')
+          playAgainButton.classList.add('playAgainButton')
+          playAgainButton.innerText = "Play Again"
         }
         
-        function playIngameMusic(){
-          audio.src = "https://www.myinstants.com/media/sounds/shut-up_2.mp3"
-          //audio.src = "Assets/Berserkers_trial_ingame_loop.mp3"
-          audio.play()
-        }
-        
-
-
         createGrid(startingVikingPosition)
         
         addWalls()
@@ -659,7 +678,10 @@
         addEnemy4Start(enemy4Position)
         playIntroSound()
         // teleportOnEdgeSquares()
+        let playAnotherGame = false
         function playGame() {
+          
+          if(playAnotherGame === false) {
           document.addEventListener('keyup', handleKeyUp)
           setInterval(() => {
           addEnemy1Movement(enemy1Position)
@@ -667,9 +689,18 @@
           addEnemy3Movement(enemy3Position)
           addEnemy4Movement(enemy4Position)
           }, 500)
+          
+          // playIngameSound()
+          playAnotherGame = true
+          return removePlayButton()
+          
+        } else if(playAnotherGame === true) {
+          playAgainButton.addEventListener('click', window.location.reload(true))
+        }
+
         }
       // }
-
+      
       window.addEventListener("keydown", function(e) {
         if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
             e.preventDefault();
@@ -678,10 +709,12 @@
 
       const playButton = document.querySelector('.playButton')
       
-      playButton.addEventListener('click', playGame)
-      // playButton.addEventListener('click', playIngameMusic)
 
-        
+      playButton.addEventListener('click', playGame)
+      // playAgainButton.addEventListener('click', )
+
+      // playButton.addEventListener('click', playIngameSound)
+
       }
       
       window.addEventListener('DOMContentLoaded', init)

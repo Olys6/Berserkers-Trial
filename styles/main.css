@@ -106,7 +106,7 @@
   }
 
   .berserkMode {
-    
+
   }
 
   .disapprovedMovement {
@@ -172,5 +172,17 @@
     padding: 10px;
     text-align: center;
     margin-top: -180px;
+    background-color: wheat;
+  }
+
+  .playAgainButton {
+    width: 200px;
+    text-decoration: none;
+    color: brown;
+    font-size: 50px;
+    padding: 10px;
+    text-align: center;
+    margin-top: -180px;
+    padding: -50px;
     background-color: wheat;
   }
