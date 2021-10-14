@@ -553,6 +553,11 @@
         livesLeft = 2
 
         function gameOver(position) {
+
+          // for(i = 0; i < cells.length; i++) {
+            
+          // }
+
         if(berserkMode === false){
           if(cells[position] === cells[enemy1Position] || cells[position] === cells[enemy2Position] || cells[position] === cells[enemy3Position] || cells[position] === cells[enemy4Position]){
             cells[position].classList.remove('Viking', 'VikingLeft')
@@ -564,7 +569,7 @@
             
             currentVikingPosition = 145
           } else if(livesLeft === 0){
-            window.alert("YOU LOSE")
+            window.alert("GAME OVER, YOU FINISHED WITH A SCORE OF " + currentScore + "!")
           }
           // console.log("WORKING FOR NOT CONTAIN")
         } else if (beserkMode = true) {
@@ -714,7 +719,6 @@
       // playAgainButton.addEventListener('click', )
 
       // playButton.addEventListener('click', playIngameSound)
-
       }
       
       window.addEventListener('DOMContentLoaded', init)
