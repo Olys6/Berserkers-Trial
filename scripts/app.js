@@ -49,12 +49,11 @@
       
       const playAgainButton = document.querySelector('a')
 
-      function playIntroSound() {
+      
         let introSound = new Audio('Assets/BT trial final.mp3')
         
         introSound.play()
       
-      }
       let playInGameMusic = 'inGame'
       // function playIngameSound() {
       //   const playIngameSound = new Audio('Assets/Berserkers_trial_loop (1).mp3')
@@ -539,8 +538,22 @@
           console.log(berserkMode)
         }
         
-          
-        
+          const button = document.querySelector('button')
+        function muteAndUnmute() {
+          if(button.classList.contains('mute')){
+            button.classList.remove('mute')
+            button.classList.add('unmute')
+            button.innerText = "unmute"
+            introSound.pause()
+            console.log("unmute")
+          } else if (button.classList.contains('unmute')) {
+            button.classList.remove('unmute')
+            button.classList.add('mute')
+            button.innerText = "mute"
+            console.log("mute")
+            introSound.play()
+          }
+        }
 
           
           // setTimeout(() => {
@@ -681,7 +694,7 @@
         addEnemy2Start(enemy2Position)
         addEnemy3Start(enemy3Position)
         addEnemy4Start(enemy4Position)
-        // playIntroSound()
+        introSound.play()
         // teleportOnEdgeSquares()
         let playAnotherGame = false
         function playGame() {
@@ -717,7 +730,7 @@
 
       playButton.addEventListener('click', playGame)
       // playAgainButton.addEventListener('click', )
-
+      button.addEventListener('click', muteAndUnmute)
       // playButton.addEventListener('click', playIngameSound)
       }
       
