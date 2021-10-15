@@ -694,13 +694,14 @@
         addEnemy2Start(enemy2Position)
         addEnemy3Start(enemy3Position)
         addEnemy4Start(enemy4Position)
-        introSound.play()
+        
         // teleportOnEdgeSquares()
         let playAnotherGame = false
         function playGame() {
-          
+          introSound.play()
           if(playAnotherGame === false) {
           document.addEventListener('keyup', handleKeyUp)
+          
           setInterval(() => {
           addEnemy1Movement(enemy1Position)
           addEnemy2Movement(enemy2Position)
