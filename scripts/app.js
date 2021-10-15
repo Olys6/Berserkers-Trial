@@ -67,7 +67,7 @@
       }
 
       function consumePotionSound() {
-        const consumePotionSound = new Audio('https://www.myinstants.com/media/sounds/mario-1-up.mp3')
+        const consumePotionSound = new Audio('Assets/mario_1up_sound.mp3')
         consumePotionSound.play()
       }
       
@@ -473,7 +473,7 @@
 
         function consumePotion(position) {
           if(cells[position].classList.contains(berserkPotionClass)) {
-            // consumePotionSound()
+            consumePotionSound()
             currentScore += 100
             currentScoreText.innerText = currentScore
             cells[position].classList.remove(berserkPotionClass)
@@ -681,7 +681,7 @@
         addEnemy2Start(enemy2Position)
         addEnemy3Start(enemy3Position)
         addEnemy4Start(enemy4Position)
-        playIntroSound()
+        // playIntroSound()
         // teleportOnEdgeSquares()
         let playAnotherGame = false
         function playGame() {
