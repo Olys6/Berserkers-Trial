@@ -50,7 +50,7 @@
       const playAgainButton = document.querySelector('a')
 
       function playIntroSound() {
-        let introSound = new Audio('Assets/Berserkers_trial_intro.mp3')
+        let introSound = new Audio('Assets/BT trial final.mp3')
         
         introSound.play()
       
