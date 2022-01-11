@@ -42,17 +42,17 @@ I spent the day planning for the project. I wrote down pseudo code for the proje
 
 <img src="https://i.imgur.com/gv7h00S.gif">
 
-<h2>4th Day: <img style="width: 30px" src="https://i.imgur.com/ExWhMvB.gif"/> Styling</h2>
+<h2>3rd - 4th Day: <img style="width: 30px" src="https://i.imgur.com/ExWhMvB.gif"/> Styling</h2>
 
 Over the weekend, I created the theme of the game. I started with getting a background with a background-image that represents the player being in a dungeon. I found some block images from the popular game Minecraft and had them act as walls in my game before looking for other assets like the coin, potion gif, and skeleton gif that suited the game. All of these assets were added with classes for each individual grid. I found this stunning runic font then I added some functionality with the Viking now able to pick up coins and put them in his score. The function of the Viking picking coins works by detecting if the div element the Viking is in has a coin, remove the coin and give the player 10 points.
 
 <img src="https://i.imgur.com/7DAQ61j.gif">
 
-<h2>7th Day: <img style="width: 30px" src="https://i.imgur.com/APJl7cm.gif"/> Operational</h2>
+<h2>5th - 7th Day: <img style="width: 30px" src="https://i.imgur.com/APJl7cm.gif"/> Operational</h2>
 
 In the first couple of weekdays, I started introducing enemies to the Viking. I started by adding all the enemies followed by allowing them to move with "math.random". The problem with this is that the skeletons were struggling to get out of their spawn so to fix this I made animations with JS to make the move a specific direction on game start. But now that there are enemies, the Viking had to find a way to eliminate them so I added functionality to the potion which gives a class to the Viking that’s on a 10-second timer when he’s able to fight against the skeletons when he kills one he gets 150 coins. I did this with setTimeout(), when the Viking picks up the potion it gives him the class of “BerserkMode”. When the Viking has the class “Berserk mode” he is able to eliminate enemies. If the Viking walked into the skeleton without “Berserk mode”, he would lose a life and go back to where he originally spawned. I just set the Viking position as the same as where he originally spawned in the correct cell in the array.
 
-`Animated movement at start of the game: 
+Animated movement at start of the game: 
 
         function addEnemy1Start(position) {
 
@@ -88,14 +88,14 @@ In the first couple of weekdays, I started introducing enemies to the Viking. I 
             cells[enemy1Position].classList.add('enemy1')
           }, 1200)
       }
-` 
+ 
 <img src="https://i.imgur.com/CQvoNhV.gif">
 
-<h2>9th Day: <img style="width: 30px" src="https://i.imgur.com/WocA7NJ.gif"/> Concluding</h2>
+<h2>8th - 9th Day: <img style="width: 30px" src="https://i.imgur.com/WocA7NJ.gif"/> Concluding</h2>
 
 The last days were about giving the finishing touches to the game. I added sound effects for everything: eliminating skeletons, coin pick up, potion, and dying with play(). I found these sound effects online myself and some were found by my brother who previously helped improve the soundtrack even more. I made it even easier for the skeletons to get out of their spawn and introduced a play again button plus a mute/unmute button. Now when the Viking steps on a box with a coin inside it will add it to his score as before he would pick up the coin when leaving his box.
 
-`How the enemies move: 
+How the enemies move: 
 
         function addEnemy2Start(position) {
 
@@ -131,7 +131,6 @@ The last days were about giving the finishing touches to the game. I added sound
             cells[enemy2Position].classList.add('enemy2')
           }, 1600)
         } 
-  `
 
 
 <h2>Bugs:</h2>
