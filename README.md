@@ -8,11 +8,11 @@
   <li>A play button to start the game and to replay the game.</li>
   <li>Include separate HTML, CSS and JavaScript files.</li>
 </ul>
-Game description
+<h2>Game description</h2>
 
 I had a week to work on a grid game of my choice. I chose PAC-MAN because I knew I could give a unique theme to the game. You play as a Viking fighting off skeletons in a dungeon and you could only kill the skeletons once you picked up the “berserk” potion. I found some nice sound effects online and I worked with my brother to make a soundtrack for the game.
 
-Deployed version here
+<h2>Deployed version <a href="https://olys6.github.io/Berserkers-Trial/" target="_blank" rel="noreferrer">here</a></h2>
 
 
 Technologies used
