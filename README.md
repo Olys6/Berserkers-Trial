@@ -16,10 +16,10 @@ I had a week to work on a grid game of my choice. I chose PAC-MAN because I knew
 
 
 <h2>Technologies used</h2>
-<ul>
-  <li style="list-type: none;"><img style="width: 50px;" src="https://i.imgur.com/BYUqdTS.png"></li>
-  <li style="list-type: none;"><img src="https://i.imgur.com/QlYh5mv.png"></li>
-  <li style="list-type: none;"><img src="https://i.imgur.com/AHjDRG3.png"></li>
+<ul style="display: flex; flex-direction: row;">
+  <li style="list-type: none;"><img style="width: 70px;" src="https://i.imgur.com/BYUqdTS.png"></li>
+  <li style="list-type: none;"><img style="width: 70px;" src="https://i.imgur.com/QlYh5mv.png"></li>
+  <li style="list-type: none;"><img style="width: 70px;" src="https://i.imgur.com/AHjDRG3.png"></li>
 </ul>
 
             
