@@ -21,6 +21,8 @@ I had a week to work on a grid game of my choice. I chose PAC-MAN because I knew
   <img style="width: 70px;" src="https://i.imgur.com/BYUqdTS.png">
   <img style="width: 70px;" src="https://i.imgur.com/QlYh5mv.png">
   <img style="width: 70px;" src="https://i.imgur.com/AHjDRG3.png">
+  <img style="width: 200px;" src="https://i.imgur.com/C9s6ueO.png">
+  <img style="width: 150px;" src="https://i.imgur.com/st6ajnt.jpg">
 </div>
 
             
