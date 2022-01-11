@@ -1,5 +1,5 @@
 # Berserkers Trial
-The Brief
+<h2>The Brief</h2>
 <ul>
   <li>Render a grid game in the browser.</li>
   <li>Create a playable character.</li>
