@@ -54,40 +54,40 @@ In the first couple of weekdays, I started introducing enemies to the Viking. I 
 
 Animated movement at start of the game: 
 
-        function addEnemy1Start(position) {
+    function addEnemy1Start(position) {
 
-          cells[position].classList.add('enemy1')
-          setTimeout(() => {
-            cells[enemy1Position].classList.remove('enemy1')
-            if(!(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy3'))){
-              enemy1Position++
-            } 
-            cells[enemy1Position].classList.add('enemy1')
-          }, 400)
-          setTimeout(() => {
-            cells[enemy1Position].classList.remove('enemy1')
-            enemy1Position -= width
-            cells[enemy1Position].classList.add('enemy1')
-          }, 600)
+      cells[position].classList.add('enemy1')
+      setTimeout(() => {
+        cells[enemy1Position].classList.remove('enemy1')
+        if(!(cells[enemy1Position + 1].classList.contains(wallClass)) && !(cells[enemy1Position + 1].classList.contains('enemy3'))){
+          enemy1Position++
+        } 
+        cells[enemy1Position].classList.add('enemy1')
+      }, 400)
+      setTimeout(() => {
+        cells[enemy1Position].classList.remove('enemy1')
+        enemy1Position -= width
+        cells[enemy1Position].classList.add('enemy1')
+      }, 600)
 
-          setTimeout(() => {
-            cells[enemy1Position].classList.remove('enemy1')
-            enemy1Position -= width
-            cells[enemy1Position].classList.add('enemy1')
-          }, 800)
+      setTimeout(() => {
+        cells[enemy1Position].classList.remove('enemy1')
+        enemy1Position -= width
+        cells[enemy1Position].classList.add('enemy1')
+      }, 800)
 
-          setTimeout(() => {
-            cells[enemy1Position].classList.remove('enemy1')
-            enemy1Position++
-            cells[enemy1Position].classList.add('enemy1')
-          }, 1000)
+      setTimeout(() => {
+        cells[enemy1Position].classList.remove('enemy1')
+        enemy1Position++
+        cells[enemy1Position].classList.add('enemy1')
+      }, 1000)
 
-          setTimeout(() => {
-            cells[enemy1Position].classList.remove('enemy1')
-            enemy1Position++
-            cells[enemy1Position].classList.add('enemy1')
-          }, 1200)
-      }
+      setTimeout(() => {
+        cells[enemy1Position].classList.remove('enemy1')
+        enemy1Position++
+        cells[enemy1Position].classList.add('enemy1')
+      }, 1200)
+    }
  
 <img src="https://i.imgur.com/CQvoNhV.gif">
 
@@ -97,40 +97,40 @@ The last days were about giving the finishing touches to the game. I added sound
 
 How the enemies move: 
 
-        function addEnemy2Start(position) {
+    function addEnemy2Start(position) {
 
-          cells[position].classList.add('enemy2')
-          setTimeout(() => {
-            cells[enemy2Position].classList.remove('enemy2')
-            if(!(cells[enemy2Position + 1].classList.contains(wallClass)) && !(cells[enemy2Position + 1].classList.contains('enemy3'))){
-              enemy2Position++
-            } 
-            cells[enemy2Position].classList.add('enemy2')
-          }, 800)
-          setTimeout(() => {
-            cells[enemy2Position].classList.remove('enemy2')
-            enemy2Position -= width
-            cells[enemy2Position].classList.add('enemy2')
-          }, 1000)
-
-          setTimeout(() => {
-            cells[enemy2Position].classList.remove('enemy2')
-            enemy2Position -= width
-            cells[enemy2Position].classList.add('enemy2')
-          }, 1200)
-
-          setTimeout(() => {
-            cells[enemy2Position].classList.remove('enemy2')
-            enemy2Position -= width
-            cells[enemy2Position].classList.add('enemy2')
-          }, 1400)
-
-          setTimeout(() => {
-            cells[enemy2Position].classList.remove('enemy2')
-            enemy2Position++
-            cells[enemy2Position].classList.add('enemy2')
-          }, 1600)
+      cells[position].classList.add('enemy2')
+      setTimeout(() => {
+        cells[enemy2Position].classList.remove('enemy2')
+        if(!(cells[enemy2Position + 1].classList.contains(wallClass)) && !(cells[enemy2Position + 1].classList.contains('enemy3'))){
+          enemy2Position++
         } 
+        cells[enemy2Position].classList.add('enemy2')
+      }, 800)
+      setTimeout(() => {
+        cells[enemy2Position].classList.remove('enemy2')
+        enemy2Position -= width
+        cells[enemy2Position].classList.add('enemy2')
+      }, 1000)
+
+      setTimeout(() => {
+        cells[enemy2Position].classList.remove('enemy2')
+        enemy2Position -= width
+        cells[enemy2Position].classList.add('enemy2')
+      }, 1200)
+
+      setTimeout(() => {
+        cells[enemy2Position].classList.remove('enemy2')
+        enemy2Position -= width
+        cells[enemy2Position].classList.add('enemy2')
+      }, 1400)
+
+      setTimeout(() => {
+        cells[enemy2Position].classList.remove('enemy2')
+        enemy2Position++
+        cells[enemy2Position].classList.add('enemy2')
+      }, 1600)
+    } 
 
 
 <h2>Bugs:</h2>
