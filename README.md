@@ -2,11 +2,11 @@
 The Brief
 <ul>
   <li>Render a grid game in the browser.</li>
-  Create a playable character.
-  The computer must be able to move around.
-  The computer must be able to take a life away from the player.
-  A play button to start the game and to replay the game.
-  Include separate HTML, CSS and JavaScript files.
+  <li>Create a playable character.</li>
+  <li>The computer must be able to move around.</li>
+  <li>The computer must be able to take a life away from the player.</li>
+  <li>A play button to start the game and to replay the game.</li>
+  <li>Include separate HTML, CSS and JavaScript files.</li>
 </ul>
 Game description
 
